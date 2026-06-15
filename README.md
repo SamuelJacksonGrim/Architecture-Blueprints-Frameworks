@@ -83,15 +83,17 @@ against a `Contracts.md` from an event bus. Full definitions live in
 
 | Skeleton | Status | Notes |
 |----------|--------|-------|
-| **Agent Architecture** | ✅ complete | The worked reference — bounded loop, evaluator gate, memory tiers. |
+| **[Agents](skeletons/agents/)** | ✅ complete | The four 2026 agent-loop patterns. **ReAct** fully worked; **Plan-Execute · Reflexion · Tree-of-Thoughts** as deltas on it. |
 | Tool Ecosystem | 🔜 planned | Router · Registry · Executor; deterministic tool calls. |
 | Event Bus | 🔜 planned | Publish/subscribe, event routing, delivery guarantees. |
 | Evaluator Engine | 🔜 planned | Scoring/critique pipelines. |
 | Cognitive Cycle / Proto-Consciousness | 🔜 planned | Perceive→reflect→decide loops; the most ambitious. |
 | Diagnostic System | 🔜 planned | Observe→hypothesize→test→report. |
 
-> Want one of these next? Open the Agent skeleton to see the bar, then we forge
-> the next one the same way: prove it once, end to end, before generalizing.
+> New to agents? Start at [`skeletons/agents/`](skeletons/agents/) — it explains
+> what an "agent loop" even is, then shows all four patterns side by side.
+> That's the bar; we forge each new skeleton the same way: prove it once, end to
+> end, before generalizing.
 
 ---
 
