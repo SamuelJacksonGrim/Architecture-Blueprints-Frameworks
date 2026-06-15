@@ -51,6 +51,27 @@ stubs. A system is only **valid** once every artifact exists; it is **complete**
 once every artifact's `status: complete`. Partial filling is allowed — missing
 *structure* is not.
 
+### What an INVALID instantiation looks like
+
+If you (the building entity) produce any of these, you have violated the rule —
+stop and fix it before continuing:
+
+- ❌ **Missing artifact.** Only 8 of the 10 files exist. (Wrote `Architecture.md`
+  and `Flows.md`, "didn't need" `Schemas.md`.) → All ten must exist, even if some
+  are still `status: stub`.
+- ❌ **Malformed frontmatter.** An artifact has no YAML block, or is missing
+  `artifact` / `status` / `order`, or uses a `status` outside
+  `stub | partial | complete`. → Every file opens with the full contract.
+- ❌ **Invented artifact name.** A file named `Config.md` or `API.md` at the
+  artifact level. → The ten names are closed; put that content *inside* the
+  right artifact (config → `Contracts`/`Types`; API → `Interfaces`).
+- ❌ **Out-of-order filling.** `Contracts.md` is `complete` while `Flows.md` is
+  still `stub`. → Respect `depends_on`; a thing can't be `complete` before what
+  it depends on is at least `partial`.
+- ❌ **Silent decision.** A non-obvious choice was made but no `D-XXX` entry
+  exists in `DecisionLog.md`. → Log it and reference it from the artifact's
+  `last_decision`.
+
 ---
 
 ## The 10 Artifacts

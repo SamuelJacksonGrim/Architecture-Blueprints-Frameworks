@@ -8,6 +8,27 @@
 
 ---
 
+## 🚫 NON-NEGOTIABLE RULES (read first, every time)
+
+These are not suggestions. If you are an AI building from this repo, you follow
+them exactly. Compressing, reordering, or "improving" the process is a failure,
+not initiative.
+
+1. **Create all 10 artifact files as stubs BEFORE writing any content.** The
+   structure exists in full from moment zero. (See the Instantiation Rule in
+   `SCHEMA.md`.)
+2. **Follow the exact order below. Never skip or reorder.** Each artifact
+   depends on the ones before it; jumping ahead produces drift.
+3. **Log every non-obvious decision** in `DecisionLog.md` with a `D-XXX` id, and
+   reference it from the artifact's `last_decision` frontmatter field.
+4. **Never write code you can't trace to a design note.** If something isn't
+   pinned down in an artifact yet, fix the artifact first — don't improvise in
+   code. (That's the line between this and vibe-coding.)
+5. **Run the self-audit (Step 10 below) before declaring the build done.** No
+   "looks good" without it.
+
+---
+
 ## The Build Order
 
 ```
@@ -76,3 +97,21 @@ When collaborating on a fill:
    set the artifact's `last_decision`.
 4. Repeat until the system is complete — or until the human points out a little
    thing that's wrong. 🙂
+
+---
+
+## Step 10 — Self-audit (mandatory before "done")
+
+Before telling the human it's built, output this checklist filled in. If any box
+can't be ticked, the build is **not** done — go fix it.
+
+- [ ] All 10 artifact files exist.
+- [ ] Every artifact has valid frontmatter (`artifact`, `status`, `order`).
+- [ ] No artifact is `complete` while something in its `depends_on` is still `stub`.
+- [ ] **`depends_on` satisfaction summary** — for each artifact, one line stating
+      which prior artifact(s) it built on and that they were in place first.
+      Example: *"Contracts ← built on Architecture + Flows (both complete). ✅"*
+- [ ] Every non-obvious decision has a `D-XXX` entry, referenced by `last_decision`.
+- [ ] No code exists that can't be traced to a design note.
+
+This step is what stops a model from quietly skipping or compressing the process.

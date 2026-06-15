@@ -44,12 +44,16 @@ code. Repo → guarantees it's built with precision instead of vibe-coded.**
 
 | File | What it is |
 |------|------------|
-| **[`GENERATOR.md`](GENERATOR.md)** | The procedure: human idea → complete repo schematic. **Start here to see how it all runs.** |
+| **[`QUICKSTART.md`](QUICKSTART.md)** | 🟢 **New here? Start here.** The whole workflow + a copy-paste prompt. |
+| **[`GENERATOR.md`](GENERATOR.md)** | The procedure an AI follows: idea → design → code. |
 | **[`SCHEMA.md`](SCHEMA.md)** | The single source of truth: the 10 artifacts + the frontmatter contract. |
-| **[`PIPELINE.md`](PIPELINE.md)** | The deterministic build order for generating any system. |
+| **[`PIPELINE.md`](PIPELINE.md)** | The deterministic build order + the **Non-Negotiable Rules**. |
+| **[`QUALITY-BAR.md`](QUALITY-BAR.md)** | The rigor "complete" must reach — so it means *good*, not just *present*. |
+| **[`prompts/`](prompts/)** | A ready-to-paste system prompt that primes any model with the full contract. |
 | **[`templates/`](templates/)** | Copy-ready stubs — one per artifact, all frontmatter in place. |
-| **[`skeletons/`](skeletons/)** | Fully-worked, fillable architectures, ready to clone. |
-| **[`examples/`](examples/)** | Generated schematics for concrete ideas — see [`examples/webscraper/`](examples/webscraper/). |
+| **[`skeletons/`](skeletons/)** | Reusable patterns — see [`skeletons/agents/`](skeletons/agents/). |
+| **[`examples/`](examples/)** | Full generated builds for concrete ideas — see [`examples/webscraper/`](examples/webscraper/). |
+| **[`CONTRIBUTING.md`](CONTRIBUTING.md)** | How to add a skeleton/variant/example without breaking consistency. |
 
 ---
 
@@ -196,10 +200,10 @@ on a single plain-English request.
 | Skeleton | Status | Notes |
 |----------|--------|-------|
 | **[Agents](skeletons/agents/)** | ✅ complete | The four 2026 agent-loop patterns. **ReAct** fully worked; **Plan-Execute · Reflexion · Tree-of-Thoughts** as deltas on it. |
+| **[Cognitive Cycle / Proto-Consciousness](skeletons/cognitive-cycle/)** | ✅ complete | Tiered self-resonating loop; single-arbiter governance; terminal sinks. The flagship for `QUALITY-BAR.md`. |
 | Tool Ecosystem | 🔜 planned | Router · Registry · Executor; deterministic tool calls. |
 | Event Bus | 🔜 planned | Publish/subscribe, event routing, delivery guarantees. |
 | Evaluator Engine | 🔜 planned | Scoring/critique pipelines. |
-| Cognitive Cycle / Proto-Consciousness | 🔜 planned | Perceive→reflect→decide loops; the most ambitious. |
 | Diagnostic System | 🔜 planned | Observe→hypothesize→test→report. |
 
 > New to agents? Start at [`skeletons/agents/`](skeletons/agents/) — it explains

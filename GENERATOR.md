@@ -13,6 +13,16 @@
 
 ---
 
+## 🚫 Before you start: the rules are non-negotiable
+
+This procedure is a contract, not a buffet. Read **`PIPELINE.md` → "Non-Negotiable
+Rules"** and follow them exactly: all 10 stubs first, exact order, every decision
+logged, no untraceable code, and the mandatory self-audit before "done."
+Compressing or "streamlining" the process is the failure mode this repo exists to
+prevent — don't reinvent it.
+
+---
+
 ## Inputs & outputs
 
 **Input:** a human idea in plain language. Optionally: constraints (language,
