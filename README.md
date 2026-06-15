@@ -1,266 +1,108 @@
-# 📘 Architecture Skeleton Library  
-*A reusable blueprint system for designing tools, agents, engines, and full software architectures.*
+# 📘 Architecture Blueprints & Frameworks
+*A fork/clone library of reusable architecture skeletons — built to be filled in **collaboration with intelligent entities**.*
 
-This repository defines a **unified architectural schema** that every system can follow — whether it’s a tool ecosystem, an agent, an event bus, an evaluator engine, or a cognitive cycle.
+This repo is a **machine for generating architectures**. You bring a goal and an
+intelligent collaborator — Claude, Copilot, GPT, Gemini, Grok, or a human with
+the repo open — and together you instantiate a complete, consistent system
+blueprint by walking a deterministic pipeline over a fixed set of artifacts.
 
-The goal is simple:
-
-> **Make architecture reusable.  
-Make system design consistent.  
-Make new repos trivial to create.**
-
-This library provides **10 core artifacts** that every architecture should expose, plus example skeletons and diagram templates you can copy into new projects.
+> **Make architecture reusable. Make system design consistent.
+> Make new repos trivial to create — *with* an intelligent collaborator, not just *for* a tool.**
 
 ---
 
-# 🧱 1. The 10‑Artifact Architecture Schema
+## 🤝 Who this is for
 
-Every architecture skeleton in this repo follows the same structure.  
-These artifacts form the **minimum viable ontology** for describing any system.
-
----
-
-## 1. Architecture  
-The structural blueprint — the *city map*.
-
-Defines:
-- Major subsystems  
-- Boundaries  
-- Data flow  
-- Control flow  
-- High‑level diagrams  
-
-This is the heart of the system.
+The primary consumer is a **collaborative loop**: a person who wants to build
+something, working with one or more intelligent entities that have access to
+their repo. The structure here is the **shared contract** between them — prose
+clear enough for a human, frontmatter structured enough for an entity to read,
+fill, and validate. (Experienced engineers can also use it as plain reference
+notes.)
 
 ---
 
-## 2. Flows  
-The behavioral blueprint — the *movie*.
+## 🧭 Start here
 
-Defines:
-- Request flow  
-- Event flow  
-- Execution flow  
-- Error flow  
-- State update flow  
-
-These patterns are the most reusable part of any architecture.
+| File | What it is |
+|------|------------|
+| **[`SCHEMA.md`](SCHEMA.md)** | The single source of truth: the 10 artifacts + the frontmatter contract. |
+| **[`PIPELINE.md`](PIPELINE.md)** | The deterministic build order for generating any system. |
+| **[`templates/`](templates/)** | Copy-ready stubs — one per artifact, all frontmatter in place. |
+| **[`skeletons/`](skeletons/)** | Fully-worked, fillable architectures, ready to clone. |
 
 ---
 
-## 3. Contracts  
-The constitution.
+## 🧱 The idea in one breath
 
-Defines:
-- Guarantees  
-- Assumptions  
-- Invariants  
-- Pre/post conditions  
+Every architecture — a tool ecosystem, an agent, an event bus, a cognitive
+cycle — is described by the **same 10 artifacts**:
 
-Contracts prevent architectural drift.
+`Architecture · Flows · Contracts · Types · Schemas · Interfaces · Dependencies · Modules · DecisionLog · README`
 
----
-
-## 4. Types  
-The vocabulary.
-
-Defines:
-- Core domain types  
-- Shared primitives  
-- Enums  
-- Identifiers  
-- Structural schemas  
-
-This is the dictionary the architecture speaks.
+Because every skeleton speaks this same language, skeletons become
+**comparable and composable** — a `Contracts.md` from an agent can be read
+against a `Contracts.md` from an event bus. Full definitions live in
+[`SCHEMA.md`](SCHEMA.md).
 
 ---
 
-## 5. Schemas  
-The conceptual ontology.
-
-Defines:
-- Entity → State → Event → Evaluation → Decision → Action  
-- Cognitive schemas  
-- Information schemas  
-- Transformation schemas  
-
-This is where architectures become generalizable.
-
----
-
-## 6. Interfaces  
-The plug points.
-
-Defines:
-- Tool interface  
-- Evaluator interface  
-- Router interface  
-- State store interface  
-- Execution interface  
-
-Interfaces make modules interchangeable.
-
----
-
-## 7. Dependencies  
-The dependency graph.
-
-Defines:
-- Allowed dependency directions  
-- Forbidden dependency directions  
-- Module hierarchy  
-- Import rules  
-
-This prevents entropy.
-
----
-
-## 8. Modules  
-The organizational chart.
-
-Defines:
-- Module list  
-- Ownership  
-- Responsibilities  
-- Boundaries  
-
-This is the decomposition layer.
-
----
-
-## 9. DecisionLog  
-The architectural memory.
-
-Defines:
-- Decisions  
-- Alternatives  
-- Reasons  
-- Dates  
-
-This prevents future confusion.
-
----
-
-## 10. README  
-The elevator pitch.
-
-Defines:
-- What is this?  
-- Why does it exist?  
-- What problem does it solve?  
-- What are the major components?  
-
-This is the front door to the repo.
-
----
-
-# 🗂️ 2. Repository Structure
+## 🗂️ Repository structure
 
 ```
-architecture-skeletons/
+.
+├── README.md            ← you are here (the pitch + map)
+├── SCHEMA.md            ← canonical 10-artifact definitions + frontmatter contract
+├── PIPELINE.md          ← deterministic build order
 │
-├── README.md
+├── templates/           ← copy-ready stubs (one per artifact)
+│   ├── Architecture.md  Flows.md  Contracts.md  Types.md  Schemas.md
+│   ├── Interfaces.md  Dependencies.md  Modules.md  DecisionLog.md  README.md
+│   └── diagrams/        ← architecture_graph · system_flow · execution_map
 │
-├── diagrams/
-│   ├── architecture_overview.md
-│   ├── artifact_relationships.md
-│   └── skeleton_example.png
-│
-├── skeletons/
-│   ├── tool-ecosystem/
-│   ├── agent-architecture/
-│   ├── event-bus/
-│   ├── evaluator-engine/
-│   └── cognitive-cycle/
-│
-└── templates/
-    ├── file_tree_template.md
-    ├── flow_diagram_template.md
-    ├── contract_template.md
-    └── schema_template.md
+└── skeletons/
+    └── agent-architecture/   ← ✅ fully worked reference (all 10 artifacts complete)
 ```
 
-Each folder under `skeletons/` contains a **complete empty architecture**, ready to clone.
+---
+
+## 🚀 How to use this repo
+
+1. **Pick a skeleton** from `skeletons/` (or start from `templates/` for a new pattern).
+2. **Copy it** into your new repo — all 10 artifacts come with it as stubs.
+   *Nothing is optional at the structural level* (the Instantiation Rule).
+3. **Walk the pipeline** in [`PIPELINE.md`](PIPELINE.md): Architecture → Flows →
+   Contracts → Types → Schemas → Interfaces → Dependencies → Modules → README,
+   logging decisions as you go.
+4. **Fill with your collaborator.** Each artifact's frontmatter (`status`,
+   `depends_on`, `order`) tells any intelligent entity exactly what to do next.
 
 ---
 
-# 🧭 3. How to Use This Repo
+## 🧩 Skeleton catalog
 
-### **1. Choose a skeleton**
-Pick the architecture pattern closest to what you’re building:
-- Tool ecosystem  
-- Agent  
-- Event bus  
-- Evaluator engine  
-- Cognitive cycle  
+| Skeleton | Status | Notes |
+|----------|--------|-------|
+| **Agent Architecture** | ✅ complete | The worked reference — bounded loop, evaluator gate, memory tiers. |
+| Tool Ecosystem | 🔜 planned | Router · Registry · Executor; deterministic tool calls. |
+| Event Bus | 🔜 planned | Publish/subscribe, event routing, delivery guarantees. |
+| Evaluator Engine | 🔜 planned | Scoring/critique pipelines. |
+| Cognitive Cycle / Proto-Consciousness | 🔜 planned | Perceive→reflect→decide loops; the most ambitious. |
+| Diagnostic System | 🔜 planned | Observe→hypothesize→test→report. |
 
-### **2. Copy the folder into your new repo**
-This gives you the full 10‑artifact structure instantly.
-
-### **3. Fill in the artifacts**
-Start with:
-- Architecture.md  
-- Flows.md  
-- Contracts.md  
-
-Then fill in the rest as the design solidifies.
-
-### **4. Add diagrams**
-Use the templates in `/templates` or `/diagrams`.
+> Want one of these next? Open the Agent skeleton to see the bar, then we forge
+> the next one the same way: prove it once, end to end, before generalizing.
 
 ---
 
-# 🧩 4. Diagram: The Architecture Artifact Stack
+## 🧠 Philosophy
 
-```
-          ┌──────────────────────┐
-          │     Architecture     │
-          └──────────┬───────────┘
-                     ↓
-          ┌──────────────────────┐
-          │        Flows         │
-          └──────────┬───────────┘
-                     ↓
-          ┌──────────────────────┐
-          │       Contracts      │
-          └──────────┬───────────┘
-                     ↓
-          ┌──────────────────────┐
-          │         Types        │
-          └──────────┬───────────┘
-                     ↓
-          ┌──────────────────────┐
-          │        Schemas       │
-          └──────────────────────┘
-```
+Architecture is not code. Architecture is **information**.
 
-This shows the **hierarchy of meaning** inside an architecture.
+This repo exists to standardize how architectures are described, make system
+design reusable, create a shared cognitive language between humans and
+intelligent entities, reduce the cost of starting new systems, and **preserve
+architectural intent over time** (that last one is what `DecisionLog` is for).
 
----
-
-# 🧠 5. Philosophy
-
-Architecture is not code.  
-Architecture is **information**.
-
-This repo exists to:
-
-- Standardize how architectures are described  
-- Make system design reusable  
-- Create a shared cognitive language  
-- Reduce the cost of starting new systems  
-- Preserve architectural intent over time  
-
-This is a **meta‑architecture** — a blueprint for blueprints.
-
----
-
-# 🧭 6. Next Steps
-
-Which skeleton do you want generated next?
-
-- Tool Ecosystem Skeleton  
-- Agent Architecture Skeleton  
-- Event Bus Skeleton  
-- Evaluator Engine Skeleton  
-- Cognitive Cycle Skeleton
+This is a **meta-architecture** — a blueprint for blueprints — and a substrate
+for co-creation, not a pile of documentation about itself.
