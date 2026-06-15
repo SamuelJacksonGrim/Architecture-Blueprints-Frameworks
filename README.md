@@ -38,6 +38,11 @@ code. Repo → guarantees it's built with precision instead of vibe-coded.**
 > the AI's instrument panel, not yours. Your whole job is to say what you want
 > and, when it shows you the result, tell it whether that's the thing you meant.
 
+> 💡 **One habit that changes everything:** ask the AI *what it would change.*
+> Inviting it into the design — "what's the risk here?", "what would you
+> restructure?" — is where the best results come from. See
+> [`COLLABORATION.md`](COLLABORATION.md). (This repo was built that way.)
+
 ---
 
 ## 🧭 Start here
@@ -55,6 +60,7 @@ code. Repo → guarantees it's built with precision instead of vibe-coded.**
 | **[`examples/`](examples/)** | Full generated builds for concrete ideas — see [`examples/webscraper/`](examples/webscraper/). |
 | **[`CONTRIBUTING.md`](CONTRIBUTING.md)** | How to add a skeleton/variant/example without breaking consistency. |
 | **[`PATTERNS.md`](PATTERNS.md)** | Living reference bank — patterns & anti-patterns from companion repos. *Capture forward, refine before merge.* |
+| **[`COLLABORATION.md`](COLLABORATION.md)** | Why to invite the AI into the design space — co-creation as a first-class principle. |
 
 ---
 
