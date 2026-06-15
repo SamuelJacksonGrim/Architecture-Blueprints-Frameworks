@@ -60,10 +60,85 @@ cycle — is described by the **same 10 artifacts**:
 
 `Architecture · Flows · Contracts · Types · Schemas · Interfaces · Dependencies · Modules · DecisionLog · README`
 
-Because every skeleton speaks this same language, skeletons become
-**comparable and composable** — a `Contracts.md` from an agent can be read
-against a `Contracts.md` from an event bus. Full definitions live in
-[`SCHEMA.md`](SCHEMA.md).
+Because every system speaks this same language, they become **comparable and
+composable** — a `Contracts.md` from an agent can be read against a
+`Contracts.md` from an event bus.
+
+---
+
+## 📚 Learn the 10 building blocks (teaching section)
+
+> **This repo is also a teaching tool.** You don't *need* to know any of this to
+> use it — but if you're curious what the AI is actually thinking about when it
+> builds your idea, here's every piece in plain language. (The precise,
+> machine-facing versions live in [`SCHEMA.md`](SCHEMA.md).)
+>
+> Every piece of software, no matter what it does, can be described by these ten
+> things. Think of building software like building a house:
+
+| # | Artifact | Metaphor | The question it answers |
+|---|----------|----------|--------------------------|
+| 1 | **Architecture** | the city map | What are the big pieces, and how are they laid out? |
+| 2 | **Flows** | the movie | What actually *happens*, step by step, when it runs? |
+| 3 | **Contracts** | the constitution | What must *always* be true? What's promised? |
+| 4 | **Types** | the vocabulary | What are the "things" the system talks about? (a User, a Price…) |
+| 5 | **Schemas** | the conceptual map | How do those things relate and change? |
+| 6 | **Interfaces** | the plug sockets | How do the pieces connect so one can be swapped out? |
+| 7 | **Dependencies** | the wiring rules | What's allowed to rely on what? (so it doesn't tangle) |
+| 8 | **Modules** | the org chart | What are the pieces, and who's responsible for what? |
+| 9 | **DecisionLog** | the diary | What choices were made, and *why*? (so nobody re-argues them) |
+| 10 | **README** | the front door | What is this, and why does it exist? |
+
+### How they stack (each layer rests on the one above)
+
+```
+          ┌──────────────────────┐
+          │  1  Architecture     │   the structure
+          └──────────┬───────────┘
+                     ↓
+          ┌──────────────────────┐
+          │  2  Flows            │   the behavior
+          └──────────┬───────────┘
+                     ↓
+          ┌──────────────────────┐
+          │  3  Contracts        │   the guarantees
+          └──────────┬───────────┘
+                     ↓
+          ┌──────────────────────┐
+          │  4 Types · 5 Schemas │   the vocabulary
+          └──────────┬───────────┘
+                     ↓
+          ┌──────────────────────┐
+          │ 6 Interfaces ·       │   the wiring &
+          │ 7 Deps · 8 Modules   │   decomposition
+          └──────────────────────┘
+
+   9 DecisionLog runs through all of it — it records *why*.
+   10 README is the front door visitors read first.
+```
+
+> **Why this order matters:** you can't promise what a thing does (Contracts)
+> until you've described what it does (Flows); you can't describe that until you
+> know its big pieces (Architecture). The AI builds top-to-bottom for exactly
+> that reason — see [`PIPELINE.md`](PIPELINE.md).
+
+### The journey: from your words to working software
+
+```
+   YOU                    THE AI (following this repo)                RESULT
+  ─────                   ────────────────────────────               ────────
+ "build me   ─────▶   1. pick a starting pattern                 
+  a thing                2. fill the 10 building blocks  ───────▶   a real,
+  that does                 (the design above), in order            working,
+  X"                     3. lay out the folders/files              correctly-
+                         4. write the code to match the design ─▶  built
+ (plain words)           5. show you what it does, plainly         project
+       ▲                                                              │
+       └──────────  "that's it" / "not quite, I meant…"  ◀───────────┘
+```
+
+You stay on the left and the right. Everything in the middle is the AI's job —
+and this repo is what makes the middle come out *right* every time.
 
 ---
 
