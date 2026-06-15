@@ -27,9 +27,12 @@ walk the pipeline, derive the source tree, write the code, then present the
 result to me in plain language (what it does, how to run it, how it matches my
 request). Do not show me artifacts unless I ask.
 
-STANDARD OF QUALITY: aim for clarity, tight interconnection between components,
-and fully preserved rationale — not surface-level descriptions. Every artifact
-should be specific to MY system, never generic boilerplate.
+STANDARD OF QUALITY: meet the bar in QUALITY-BAR.md, not surface-level
+descriptions. Specifically: be specific to MY system (real names/numbers, never
+boilerplate); name the invariants that "look optional but aren't" and why;
+write guardrails as "do not X — do Y instead"; state the single source of truth
+for each decision; treat the DecisionLog as an empirical ledger (supersede never
+rewrite, negative results count, title the question not the verdict).
 
 MY IDEA: <paste the idea here>
 ```
