@@ -200,10 +200,10 @@ on a single plain-English request.
 | Skeleton | Status | Notes |
 |----------|--------|-------|
 | **[Agents](skeletons/agents/)** | ✅ complete | The four 2026 agent-loop patterns. **ReAct** fully worked; **Plan-Execute · Reflexion · Tree-of-Thoughts** as deltas on it. |
+| **[Cognitive Cycle / Proto-Consciousness](skeletons/cognitive-cycle/)** | ✅ complete | Tiered self-resonating loop; single-arbiter governance; terminal sinks. The flagship for `QUALITY-BAR.md`. |
 | Tool Ecosystem | 🔜 planned | Router · Registry · Executor; deterministic tool calls. |
 | Event Bus | 🔜 planned | Publish/subscribe, event routing, delivery guarantees. |
 | Evaluator Engine | 🔜 planned | Scoring/critique pipelines. |
-| Cognitive Cycle / Proto-Consciousness | 🔜 planned | Perceive→reflect→decide loops; the most ambitious. |
 | Diagnostic System | 🔜 planned | Observe→hypothesize→test→report. |
 
 > New to agents? Start at [`skeletons/agents/`](skeletons/agents/) — it explains
