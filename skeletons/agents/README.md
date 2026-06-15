@@ -26,6 +26,12 @@ is a different way to organize it.
 | **[Plan-Execute](plan-execute/)** | plan all steps up front → run them → replan if needed | long tasks with dependent steps (~3.6× faster) | low–med |
 | **[Reflexion](reflexion/)** | attempt → critique the failure → retry smarter | tasks with a pass/fail signal to learn from | med |
 | **[Tree-of-Thoughts](tree-of-thoughts/)** | branch into many thoughts → score → backtrack | puzzles/planning needing exploration | high |
+| **[Guarded](guarded/)** 🛡️ overlay | any loop **+ a gate that checks every action before it runs** | costly/irreversible actions that need a safety checkpoint | +gate |
+
+> **Guarded is an *overlay*, not a fifth loop shape.** The pre-execution
+> Evaluator gate is orthogonal to *how* the agent reasons — you can wrap it
+> around any of the four patterns above. It's kept as a full worked skeleton
+> because it's the most complete demonstration of the 10-artifact schema.
 
 **The golden rule (2026 consensus):** start with **ReAct**. Add a fancier
 pattern *only* when a specific failure mode demands it. Over-engineering an agent
@@ -60,6 +66,7 @@ Every pattern maps onto the repo's universal chain
 - **Reflexion** — Evaluation is *explicit and remembered* (the critique step).
 - **Tree-of-Thoughts** — Evaluation *scores branches* to steer a search.
 - **Plan-Execute** — Decision is *front-loaded* into one plan.
+- **Guarded** — Evaluation is a *mandatory gate between Decision and Action*.
 
 That shared ontology is what lets you compare an agent to any other skeleton in
 this repo.
