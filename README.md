@@ -1,38 +1,42 @@
 # 📘 Architecture Blueprints & Frameworks
-*A fork/clone library of reusable architecture skeletons — built to be filled in **collaboration with intelligent entities**.*
+*A roadmap that lets an AI build what you ask for **right** — not vibe-coded.*
 
-This repo is a **machine for generating architectures**. You bring a goal and an
-intelligent collaborator — Claude, Copilot, GPT, Gemini, Grok, or a human with
-the repo open — and together you instantiate a complete, consistent system
-blueprint by walking a deterministic pipeline over a fixed set of artifacts.
+**You don't need to know how to code. You don't need to know what any of the
+words in here mean.** You describe what you want in plain English; an
+intelligent entity — Claude, Copilot, GPT, Gemini, Grok — reads this repo and
+builds it for you, properly, end to end.
 
-> **Make architecture reusable. Make system design consistent.
-> Make new repos trivial to create — *with* an intelligent collaborator, not just *for* a tool.**
+This repo is the **roadmap the AI follows** so that "build me a thing" turns into
+a real, correctly-structured project instead of a pile of guesses.
+
+> **Describe it in plain words. The AI builds it right. The repo is what keeps
+> it honest.**
 
 ---
 
-## 🤝 The division of labor (read this — it's the whole point)
+## 🤝 Who does what (read this — it's the whole point)
 
-This repo is a **layout and a roadmap, not a finished system**. The work splits
-cleanly:
+- **You bring the *idea*, in plain language.** *"I want an app that tracks my
+  plants' watering schedules."* That's all you do. You write no code, you read
+  no files in here, and you never need to know what a "type" or a "schema" is.
+- **The AI does *everything else* — design *and* the actual code.** A capable
+  model already knows *how* to build software. What it lacks, left alone, is a
+  **structure to build into** — so it improvises, forgets pieces, and
+  vibe-codes. The result is shaky, especially for someone who can't tell good
+  code from bad.
+- **This repo is that structure.** It's a checklist the AI fills out *for
+  itself* before and while it builds — what the pieces are, how they connect,
+  what must stay true. Those notes (Types, Flows, Contracts…) aren't for you;
+  they're how the AI makes sure it builds the *right* thing the *right* way,
+  every time.
 
-- **The human brings the *idea*.** "I want a diagnostic agent." "Build me an
-  event bus." That's the input. The human is *not* expected to fill in ten
-  artifacts by hand — that's slow, tedious work, and it's not their job.
-- **The intelligent entity does the *building*.** An AI (me, or any capable
-  model with repo access) already knows *how* to design these systems. What it
-  lacks, left to itself, is a **consistent structure to build into** — so it
-  freelances, and every result looks different.
-- **This repo is the structure.** The schema, the pipeline, and the templates
-  are the rails that make an AI build the *same way every time* — correctly,
-  completely, and comparably — from nothing more than a human's idea.
+So: **you → idea. AI → reads this roadmap → designs it, then writes all the
+code. Repo → guarantees it's built with precision instead of vibe-coded.**
 
-So: **human → idea. Entity → follows this roadmap → fills it in. Repo →
-guarantees it's built properly.** The frontmatter (`status`, `depends_on`,
-`order`) exists so the entity always knows the next correct move without the
-human micromanaging it.
-
-(Experienced engineers can also use the whole thing as plain reference notes.)
+> ### 🙋 "But I don't know what any of these files are."
+> You don't have to. The ten artifacts, the frontmatter, the pipeline — that's
+> the AI's instrument panel, not yours. Your whole job is to say what you want
+> and, when it shows you the result, tell it whether that's the thing you meant.
 
 ---
 
@@ -68,6 +72,7 @@ against a `Contracts.md` from an event bus. Full definitions live in
 ```
 .
 ├── README.md            ← you are here (the pitch + map)
+├── GENERATOR.md         ← the procedure: your idea → finished build
 ├── SCHEMA.md            ← canonical 10-artifact definitions + frontmatter contract
 ├── PIPELINE.md          ← deterministic build order
 │
@@ -76,29 +81,38 @@ against a `Contracts.md` from an event bus. Full definitions live in
 │   ├── Interfaces.md  Dependencies.md  Modules.md  DecisionLog.md  README.md
 │   └── diagrams/        ← architecture_graph · system_flow · execution_map
 │
-└── skeletons/
-    └── agent-architecture/   ← ✅ fully worked reference (all 10 artifacts complete)
+├── skeletons/           ← reusable patterns
+│   └── agents/          ← ✅ ReAct · Plan-Execute · Reflexion · Tree-of-Thoughts · Guarded
+│
+└── examples/            ← full generated builds for concrete ideas
+    └── webscraper/      ← ✅ the whole procedure run on one plain-English request
 ```
 
 ---
 
 ## 🚀 How to use this repo
 
-**The human:**
-1. **State the idea** — what system you want ("a diagnostic agent that watches logs").
-2. **Point an entity at this repo** and ask it to build that system here.
-3. **Course-correct** — review, catch the little things that are wrong, steer. That's it.
+**Your whole job (no coding, no jargon):**
+1. **Say what you want**, in plain words: *"build me an app that tracks my
+   plants' watering schedules."*
+2. **Point an AI at this repo** and ask it to build that.
+3. **Look at what it shows you** and say whether it's the thing you meant. Done.
 
-**The intelligent entity (the actual builder):**
-1. **Pick a skeleton** from `skeletons/` (or start from `templates/` for a new pattern).
-2. **Instantiate it** — all 10 artifacts exist as stubs from the start.
+**What the AI does (the actual building):**
+1. **Picks a starting point** — a pattern from `skeletons/`, or the blank
+   `templates/` for anything new.
+2. **Instantiates it** — all 10 design notes exist as stubs from the start.
    *Nothing is optional at the structural level* (the Instantiation Rule).
-3. **Walk the pipeline** in [`PIPELINE.md`](PIPELINE.md): Architecture → Flows →
+3. **Walks the pipeline** in [`PIPELINE.md`](PIPELINE.md): Architecture → Flows →
    Contracts → Types → Schemas → Interfaces → Dependencies → Modules → README,
-   logging decisions in `DecisionLog` along the way.
-4. **Fill each artifact in order.** The frontmatter (`status`, `depends_on`,
-   `order`) says exactly what to do next — so the build stays correct and
-   consistent without the human hand-holding it.
+   recording its reasoning in `DecisionLog`.
+4. **Fills each note in order**, then **derives the folder/file tree and writes
+   the actual code** against it. Because every piece, connection, and rule was
+   pinned down first, the code comes out *precise* — not vibe-coded.
+
+The full step-by-step the AI follows is in **[`GENERATOR.md`](GENERATOR.md)**, and
+**[`examples/webscraper/`](examples/webscraper/)** shows the whole thing run once
+on a single plain-English request.
 
 ---
 

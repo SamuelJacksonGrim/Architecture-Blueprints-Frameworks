@@ -1,13 +1,15 @@
-# 🏗️ GENERATOR — From a human's idea to a complete repo schematic
+# 🏗️ GENERATOR — From a plain-English idea to a finished, working build
 
-> This is the procedure an **intelligent entity** follows when a human shows up
-> with an idea. It turns one sentence — *"I want to build a webscraper for X"* —
-> into a full repo schematic: the **folder/file tree** plus all **ten filled
-> artifacts** (`Architecture`, `Flows`, `Types`, `Schemas`, `Contracts`,
-> `Interfaces`, `Dependencies`, `Modules`, `DecisionLog`, `README`).
+> This is the procedure an **AI** follows when a non-technical human shows up
+> with an idea. The human says one sentence — *"build me a webscraper for X"* —
+> and the AI does the rest: it designs the system, writes the **ten design
+> notes** (`Architecture`, `Flows`, `Types`, `Schemas`, `Contracts`,
+> `Interfaces`, `Dependencies`, `Modules`, `DecisionLog`, `README`), lays out the
+> folder/file tree, and **writes the actual code**.
 >
-> The human brings the idea. The entity runs this. The repo guarantees the
-> result is consistent. (See the README's "division of labor".)
+> The human writes nothing and reads none of these notes. They exist so the AI
+> knows *exactly* what to build before it builds it — which is the difference
+> between a precise build and vibe-coding. (See the README's "Who does what".)
 
 ---
 
@@ -16,11 +18,13 @@
 **Input:** a human idea in plain language. Optionally: constraints (language,
 scale, deadline), or "ask me questions first."
 
-**Output, two layers:**
-1. **The design** — the ten artifacts from `SCHEMA.md`, *filled for this idea*.
+**Output, three layers:**
+1. **The design** — the ten artifacts from `SCHEMA.md`, *filled for this idea*
+   (the AI's own spec; the human never reads these).
 2. **The source tree** — the actual folders/files the design implies
-   (`ProjectStructure.md` + a real directory layout), so the human can start
-   coding immediately.
+   (`ProjectStructure.md` + a real directory layout).
+3. **The code** — the working implementation, written by the AI against the
+   design, plus a plain-English explanation of what it does and how to run it.
 
 ---
 
@@ -61,9 +65,22 @@ From `Modules.md` + `Dependencies.md`, emit `ProjectStructure.md`: the real
 folder/file layout. One module → roughly one folder/package. The artifacts are
 the *design*; this is the *scaffold* the design maps onto.
 
-### Step 4 — Hand back the schematic
-Present both layers. The human reviews, catches the little things, and steers.
-Then they (or the entity) scaffold the actual code into the tree.
+### Step 4 — Write the code
+Implement each module into its folder, using the artifacts as the spec:
+- `Types.md`/`Schemas.md` → the data structures.
+- `Interfaces.md` → the function/class signatures.
+- `Contracts.md` → the validations, guards, and tests that must hold.
+- `Flows.md` → the control flow that wires it together.
+
+Because every piece was pinned down first, the code is *implementing a plan*,
+not improvising one. That's the whole anti-vibe-coding mechanism: the AI never
+writes a line it can't trace back to a decision in the design notes.
+
+### Step 5 — Show the human, in their language
+Present the result the way a non-coder can judge it: *what it does*, *how to run
+it*, and *whether it matches what they asked for* — not a wall of code. The human
+confirms it's the thing they meant (or describes the difference), and the AI
+iterates. They never have to read an artifact to do this.
 
 ---
 
@@ -80,7 +97,7 @@ real, complete one):
 │   ├── Interfaces.md  Dependencies.md  Modules.md  DecisionLog.md
 │   └── diagrams/
 ├── ProjectStructure.md    ← the source tree the design implies
-└── src/ (…)               ← stubbed folders/files ready to code into
+└── src/ (…)               ← the working code the AI writes against that design
 ```
 
 ---

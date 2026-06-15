@@ -12,7 +12,11 @@
 1. **The design** — all ten artifacts in [`architecture/`](architecture/),
    filled specifically for a webscraper (not generic stubs).
 2. **The source tree** — [`ProjectStructure.md`](ProjectStructure.md) plus a
-   stubbed [`src/`](src/) layout, one folder per module, ready to code into.
+   [`src/`](src/) layout, one folder per module.
+
+> This example stops at the design + structure layers to keep it readable. In a
+> live build the AI then **writes the actual code** into each `src/` folder
+> (Step 4 of [`../../GENERATOR.md`](../../GENERATOR.md)) — the human never touches it.
 
 ## Suggested reading order
 1. [`architecture/README.md`](architecture/README.md) — what & why
