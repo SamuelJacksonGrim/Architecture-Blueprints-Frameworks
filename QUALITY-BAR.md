@@ -25,7 +25,10 @@ If an artifact would read the same for a different system, it isn't done.
 ## 2. Name the invariants that "look optional but aren't"
 The most dangerous rules are the ones whose violation causes **subtle breakage,
 not a loud error**. `Contracts.md` should call these out explicitly, each with
-*why* it matters.
+*why* it matters — and, where possible, **the failure mode it prevents**. An
+invariant justified by a demonstrated failure ("without the `±0.05` cap, repeated
+perturbation erodes the system into the FM2 regime") is far stronger than a bare
+"don't change this."
 
 > Example shape: *"`arousal`/`valence` are read-only computed properties — do not
 > store them as state; storing double-counts the smoothing already applied."*
@@ -42,10 +45,22 @@ For every kind of decision, exactly one component decides; everything else only
 *produces reports*. Write down who arbitrates and who merely advises. Diffuse
 authority is how systems drift.
 
-## 5. Constants carry an audit obligation
+## 5. Constants carry an audit obligation — and provenance
 A magic number is a contract with everything downstream of it. Record it once,
 and state: *"do not change without auditing every consumer"* — and ideally list
 them. (Weights that must sum to 1.0; bounds that gate safety; etc.)
+
+For a constant that was **derived rather than chosen**, go further (the strongest
+form of this discipline):
+- **Record where it came from** — "computed by X, not picked." A derived value
+  with no provenance is indistinguishable from a guess.
+- **Name one authoritative source** and make downstream consumers explicitly
+  subordinate: *"if the running system's value drifts from the source, the source
+  is correct."*
+- **Give a re-derivation protocol** — the checklist to re-validate when an
+  upstream input changes, *before* propagating the new value.
+- **Keep the validator independent.** A tool that certifies a system should not
+  depend on that system, or it can't stay an honest check.
 
 ## 6. Boundaries: terminal sinks and no hidden feedback
 Be explicit about what is **observe-only** and must never feed back into the

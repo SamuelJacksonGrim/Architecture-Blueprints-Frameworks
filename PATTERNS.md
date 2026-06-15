@@ -74,3 +74,27 @@ A half-formed note captured beats a sharp insight forgotten.
 > EventBus a usable reference and repeated the "1 Hz" / live-biology claims. A
 > second pass reading the *source* corrected all of that. Captured forward,
 > refined before merge — exactly the principle above.
+
+### relational_system_mc
+- **Studied:** 2026-06-15 · **Status:** active
+- **Role in its stack:** standalone mathematical certifier — derives the
+  constants (e.g. `K_SCALE = 0.1418`) and proves the relational system is
+  globally stable (single attractor, GAS). Not a service, not an architecture.
+
+**Skeleton value:** none. Pure research/numerics — nothing to turn into a skeleton.
+
+**Methodology worth lifting (this is why the repo isn't a zero)**
+- 🎯 **Derived-constant provenance + re-derivation protocol.** Constants are
+  *computed and certified*, not chosen; one repo is the authoritative source;
+  downstream consumers are explicitly subordinate ("if they drift, this is
+  correct"); and there's a checklist to re-validate before propagating. →
+  folded into `QUALITY-BAR §5`.
+- **Invariants justified by named failure modes.** FM1/FM2/FM3 are documented
+  failure regimes, and each motivates a specific invariant (FM2 erosion → why
+  `_MAX_DELTA = 0.05` exists). → strengthened `QUALITY-BAR §2`.
+- **Independent validator.** The certifier has *zero* dependencies on the
+  systems it certifies, by design — so it stays an honest check. → `QUALITY-BAR §5`.
+
+**Lesson:** a repo can contribute real rigor without contributing a pattern.
+Negative-on-skeletons is not negative-on-value. (Our own "negative findings
+count" rule, applied.)
