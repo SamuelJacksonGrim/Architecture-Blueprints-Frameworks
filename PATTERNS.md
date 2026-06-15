@@ -23,12 +23,23 @@ A half-formed note captured beats a sharp insight forgotten.
 ---
 
 ## Skeleton candidates emerging
+- **Supervisory Governor / oversight loop** — predict risk → derive tolerance
+  from intent → decide (continue/modulate/abort, hard ceiling) → actuate.
+  (source: resonance-scaling-policy; echoes RFE governance + sovereign DRA) — *strong, new shape*
 - **Observer / read-model** — background compute loop → cached snapshot →
   non-blocking read-only API. (source: unified-observer-architecture) — *strong*
 - **Event Bus** — planned; do **not** source from unified-observer (stub). Wait
   for sovereign_manifold / ProjectSynapse instances.
 - **Gateway / I-O adapter** — `sensory_input → encoder → translator → expression`
   boundary pipeline. (source: unified-observer-architecture) — *maybe*
+
+### Composable guard patterns (not full skeletons — overlays/modules)
+- **Budget governor** — spend/recharge/refuse a budget (T-Value) before costly ops.
+- **Stability governor** — track a stability index, apply "stress" per action,
+  force a recovery pause below a critical threshold (self-throttle under load).
+- **Sentinel boundary** — validate/sanitize untrusted input at the edge before entry.
+- **N-of-N unanimous gate** — proceed only if *all* independent layers green-light.
+- **Graduated enforcement by tier** — more mandatory checks engage as risk tier rises.
 
 ---
 
@@ -98,3 +109,47 @@ A half-formed note captured beats a sharp insight forgotten.
 **Lesson:** a repo can contribute real rigor without contributing a pattern.
 Negative-on-skeletons is not negative-on-value. (Our own "negative findings
 count" rule, applied.)
+
+### resonance-scaling-policy
+- **Studied:** 2026-06-15 · **Status:** active
+- **Role in its stack:** a self-governing "scaling policy" framework (a riff on
+  Anthropic's RSP): a model-internal, multi-layer governance system that gates
+  capability changes. FastAPI orchestrator + k8s (Deployment/Service/HPA) + Docker.
+- **Code reality:** control *interfaces* are real and clean; several *engines*
+  are stubs. Verified by reading source, not docs.
+
+**Real & reusable**
+- 🎯 **Supervisory Governor loop.** PAE (predict failure prob) → PAU (tolerance
+  from intent) → ExecutiveGovernor (`decide` → CONTINUE/MODULATE/ABORT, hard
+  `failure_ceiling`) → DMC (modulate intensity). Separating *prediction* /
+  *tolerance* / *decision* / *actuation* is the reusable shape. → strongest
+  skeleton candidate from this repo; a NEW shape (oversight, not agent/cycle).
+- **Stability governor (SSI).** Tracks a stability index, applies "stress" per
+  costly action, forces a recovery pause below a critical threshold;
+  `ensure_stability_for_task()` gates before expensive work. → guard pattern.
+- **Budget governor (DRA T-Value).** spend/recharge/refuse before high-cost ops.
+  Mirrors sovereign_manifold's DRA — cross-repo consistency. → guard pattern.
+- **Sentinel input-integrity boundary.** Length cap + risk-keyword denylist on
+  untrusted input before entry. → guard pattern (pairs with agent untrusted-boundary).
+- **N-of-N unanimous gate** (release only if all layers green-light) and
+  **graduated enforcement by risk tier** (ASL-1→5+). → governance patterns.
+- **Auditability-by-construction.** Every release auto-ships a full audit bundle
+  (risk report, governor logs, audit trail, arbitration transcript, change log),
+  "no cherry-picking." → governance/transparency pattern (ties to QUALITY-BAR §8).
+
+**Anti-patterns (honest flags)**
+- **Class duplication:** `GovernorProtocol` lives in `governor_protocol.py` AND
+  is copy-pasted inline into the orchestrator "for deployment simplification" —
+  two copies, guaranteed drift. (Violates QUALITY-BAR §5 single-source.)
+- **Stubs as engines:** `PredictiveAnalysisEngine` returns `random`; `PARLoop`
+  returns f-strings. README claims ("thousands of sims/sec", "99.9%") aren't
+  backed by these files. (QUALITY-BAR §1/§8.)
+- **Real bug:** `SentinelProtocol` uses `List[str]` without importing `List` → NameError.
+- **Persona naming** (Koneko/Deckard Kain/Jennifer/Diablo) obscures function;
+  generic pattern names are what transfer.
+
+**Open question for the ontology:** this repo has a real **deployment/ops layer**
+(k8s HPA autoscaling, ConfigMap, Docker) that the 10 artifacts don't explicitly
+name. Not a reason to add an 11th artifact (the set is closed) — scaling targets
+fit under Architecture/Contracts/Dependencies — but worth deciding how a
+generated build expresses "how it deploys & scales." Flag for later.
