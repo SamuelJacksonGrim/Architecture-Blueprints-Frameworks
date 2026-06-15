@@ -40,10 +40,12 @@ human micromanaging it.
 
 | File | What it is |
 |------|------------|
+| **[`GENERATOR.md`](GENERATOR.md)** | The procedure: human idea → complete repo schematic. **Start here to see how it all runs.** |
 | **[`SCHEMA.md`](SCHEMA.md)** | The single source of truth: the 10 artifacts + the frontmatter contract. |
 | **[`PIPELINE.md`](PIPELINE.md)** | The deterministic build order for generating any system. |
 | **[`templates/`](templates/)** | Copy-ready stubs — one per artifact, all frontmatter in place. |
 | **[`skeletons/`](skeletons/)** | Fully-worked, fillable architectures, ready to clone. |
+| **[`examples/`](examples/)** | Generated schematics for concrete ideas — see [`examples/webscraper/`](examples/webscraper/). |
 
 ---
 
