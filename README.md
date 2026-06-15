@@ -54,6 +54,7 @@ code. Repo → guarantees it's built with precision instead of vibe-coded.**
 | **[`skeletons/`](skeletons/)** | Reusable patterns — see [`skeletons/agents/`](skeletons/agents/). |
 | **[`examples/`](examples/)** | Full generated builds for concrete ideas — see [`examples/webscraper/`](examples/webscraper/). |
 | **[`CONTRIBUTING.md`](CONTRIBUTING.md)** | How to add a skeleton/variant/example without breaking consistency. |
+| **[`PATTERNS.md`](PATTERNS.md)** | Living reference bank — patterns & anti-patterns from companion repos. *Capture forward, refine before merge.* |
 
 ---
 
