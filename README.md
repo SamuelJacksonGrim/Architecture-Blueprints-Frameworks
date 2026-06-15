@@ -44,12 +44,15 @@ code. Repo → guarantees it's built with precision instead of vibe-coded.**
 
 | File | What it is |
 |------|------------|
-| **[`GENERATOR.md`](GENERATOR.md)** | The procedure: human idea → complete repo schematic. **Start here to see how it all runs.** |
+| **[`QUICKSTART.md`](QUICKSTART.md)** | 🟢 **New here? Start here.** The whole workflow + a copy-paste prompt. |
+| **[`GENERATOR.md`](GENERATOR.md)** | The procedure an AI follows: idea → design → code. |
 | **[`SCHEMA.md`](SCHEMA.md)** | The single source of truth: the 10 artifacts + the frontmatter contract. |
-| **[`PIPELINE.md`](PIPELINE.md)** | The deterministic build order for generating any system. |
+| **[`PIPELINE.md`](PIPELINE.md)** | The deterministic build order + the **Non-Negotiable Rules**. |
+| **[`prompts/`](prompts/)** | A ready-to-paste system prompt that primes any model with the full contract. |
 | **[`templates/`](templates/)** | Copy-ready stubs — one per artifact, all frontmatter in place. |
-| **[`skeletons/`](skeletons/)** | Fully-worked, fillable architectures, ready to clone. |
-| **[`examples/`](examples/)** | Generated schematics for concrete ideas — see [`examples/webscraper/`](examples/webscraper/). |
+| **[`skeletons/`](skeletons/)** | Reusable patterns — see [`skeletons/agents/`](skeletons/agents/). |
+| **[`examples/`](examples/)** | Full generated builds for concrete ideas — see [`examples/webscraper/`](examples/webscraper/). |
+| **[`CONTRIBUTING.md`](CONTRIBUTING.md)** | How to add a skeleton/variant/example without breaking consistency. |
 
 ---
 
