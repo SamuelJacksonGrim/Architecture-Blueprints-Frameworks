@@ -113,5 +113,7 @@ can't be ticked, the build is **not** done — go fix it.
       Example: *"Contracts ← built on Architecture + Flows (both complete). ✅"*
 - [ ] Every non-obvious decision has a `D-XXX` entry, referenced by `last_decision`.
 - [ ] No code exists that can't be traced to a design note.
+- [ ] **It runs.** A smoke test of the main path passed — or, if the environment
+      can't run it, that's stated plainly (not implied to work). (QUALITY-BAR §9.)
 
 This step is what stops a model from quietly skipping or compressing the process.

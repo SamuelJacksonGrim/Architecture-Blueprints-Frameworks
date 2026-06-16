@@ -10,38 +10,30 @@ last_decision: null
 
 # DecisionLog — *the architectural memory*
 
-> Maintained **continuously**, not in a single pass. This is the artifact that
-> lets different intelligences across time avoid re-litigating settled choices.
-> Append entries; never rewrite history. Reference entries by id (e.g. `D-002`)
-> from an artifact's `last_decision` field.
->
-> Treat this as an **empirical ledger**, not a changelog — see `QUALITY-BAR.md`
-> §7. The disciplines below are why it stays trustworthy across handoffs.
+> A plain record of the choices that shaped the build, so nobody re-litigates
+> them later. Maintained as you go, not in one pass. Reference entries by id
+> (e.g. `D-002`) from an artifact's `last_decision` field.
 
-## Discipline (non-negotiable)
-- **Append-only. Supersede, never rewrite.** When a later decision overturns an
-  earlier one, add a new entry and set the old one's `Status` — the overturning
-  *is* the record.
-- **Title the question, not the verdict.** "Auth: sessions vs tokens?" survives
-  a reversal; "Use tokens" becomes a lie the moment you switch.
-- **Negative results count.** "Tried X, it failed because Y" is often the most
-  time-saving entry there is.
-- **Separate observation from interpretation** — facts survive, explanations age.
+## A couple of habits that keep it useful
+- **Append-only. Supersede, never rewrite.** If a later choice overturns an
+  earlier one, add a new entry and mark the old one's `Status`. The change of
+  mind is part of the record.
+- **Title the question, not the verdict.** "Auth: sessions vs tokens?" still
+  makes sense after a reversal; "Use tokens" becomes a lie the moment you switch.
 
 ## Status values
-`active` · `superseded by D-NNN` · `invalidated by D-NNN` · `partial / blocked`
+`active` · `superseded by D-NNN` · `reversed by D-NNN`
 
 ## Entry format
 
 ```
-### D-NNN — <title phrased as the question/investigation, not a conclusion>
+### D-NNN — <title phrased as the question>
 - **Date:** YYYY-MM-DD
-- **Decided by:** <human / entity / both>
-- **Status:** active | superseded by D-NNN | invalidated by D-NNN | partial
-- **Depends on:** <D-NNN, …>   (which earlier decisions this rests on)
+- **Decided by:** <human / AI / both>
+- **Status:** active | superseded by D-NNN | reversed by D-NNN
 - **Decision:** <what was chosen>
 - **Alternatives:** <what was rejected, and the trade-off>
-- **Reason:** <why — the basis, not just the verdict>
+- **Reason:** <why>
 - **Affects:** <artifacts/modules>
 ```
 
@@ -51,10 +43,8 @@ last_decision: null
 - **Date:** <fill on instantiation>
 - **Decided by:** both
 - **Status:** active
-- **Depends on:** —
 - **Decision:** Build order is Architecture → Flows → Contracts.
 - **Alternatives:** Contracts before Flows (rejected).
-- **Reason:** A contract constrains a behavior; you cannot write a meaningful
-  guarantee for a flow you have not yet described. Inherited from the repo's
-  `PIPELINE.md`.
+- **Reason:** A contract constrains a behavior; you can't write a meaningful
+  guarantee for a flow you haven't described yet. Inherited from `PIPELINE.md`.
 - **Affects:** Flows, Contracts, build pipeline.

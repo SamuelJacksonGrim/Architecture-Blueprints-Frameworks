@@ -86,11 +86,18 @@ Because every piece was pinned down first, the code is *implementing a plan*,
 not improvising one. That's the whole anti-vibe-coding mechanism: the AI never
 writes a line it can't trace back to a decision in the design notes.
 
-### Step 5 — Show the human, in their language
+### Step 5 — Prove it runs (smoke test)
+Don't hand over code you haven't run. Write and run a **smoke test of the main
+path** — the happy path, end to end — and any quick checks the `Contracts`
+demand. "Wrote it" and "it works" are different claims; this step is what makes
+the difference. If the build environment can't run it, say so plainly instead of
+implying it works. (See `QUALITY-BAR.md` §9.)
+
+### Step 6 — Show the human, in their language
 Present the result the way a non-coder can judge it: *what it does*, *how to run
-it*, and *whether it matches what they asked for* — not a wall of code. The human
-confirms it's the thing they meant (or describes the difference), and the AI
-iterates. They never have to read an artifact to do this.
+it*, *that it ran* (the smoke test passed), and *whether it matches what they
+asked for* — not a wall of code. The human confirms it's the thing they meant (or
+describes the difference), and the AI iterates. They never read an artifact to do this.
 
 ---
 

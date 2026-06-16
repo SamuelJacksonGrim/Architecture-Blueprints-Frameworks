@@ -1,25 +1,25 @@
-# Execution Map — Cognitive Cycle
+# Execution Map — Autonomous Cognitive Loop
 
-Control view of one cycle. Reporters advise in parallel; Governance alone rules.
+Control view of one cycle. Reporters advise in parallel; the Governor alone rules.
 
 ```mermaid
 sequenceDiagram
-  participant C as CycleCoordinator
-  participant S as Substrate
+  participant C as LoopCoordinator
+  participant S as WorkingState
   participant G as Generator
-  participant R as Reporters (trust/ethics/bonds/…)
-  participant GOV as Governance
-  participant T as SubjectiveTime (sink)
+  participant R as Reporters (trust/validation/abuse/prefs)
+  participant GOV as Governor
+  participant T as Clock (sink)
   C->>T: tick()
-  C->>S: observe rhythm / coherence
-  C->>G: express(field) → refine
-  C->>R: assess(state)
+  C->>S: perceive / read metrics
+  C->>G: propose(state)
+  C->>R: assess(state, action)
   R-->>GOV: Reports (advice only)
-  C->>GOV: arbitrate(reports)
-  GOV-->>C: GovernanceDecision
+  C->>GOV: decide(reports)
+  GOV-->>C: Decision
   alt decision allows
-    C->>S: inject(expression)
-    C->>S: crystallize? / decay()
+    C->>S: commit(action)
+    C->>S: consolidate? / age()
   end
-  C->>T: update_dilation()  %% terminal sink, read by diagnostics only
+  C->>T: update_metrics()  %% terminal sink, read by diagnostics only
 ```

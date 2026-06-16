@@ -38,22 +38,28 @@ code. Repo → guarantees it's built with precision instead of vibe-coded.**
 > the AI's instrument panel, not yours. Your whole job is to say what you want
 > and, when it shows you the result, tell it whether that's the thing you meant.
 
+> 💡 **One habit that changes everything:** ask the AI *what it would change.*
+> Inviting it into the design — "what's the risk here?", "what would you
+> restructure?" — is where the best results come from. See
+> [`COLLABORATION.md`](COLLABORATION.md). (This repo was built that way.)
+
 ---
 
 ## 🧭 Start here
 
 | File | What it is |
 |------|------------|
-| **[`QUICKSTART.md`](QUICKSTART.md)** | 🟢 **New here? Start here.** The whole workflow + a copy-paste prompt. |
+| **[`QUICKSTART.md`](QUICKSTART.md)** | 🟢 **New here? Start here.** The whole workflow in plain terms. |
+| **[`AGENTS.md`](AGENTS.md)** | What an AI reads automatically when pointed at this repo — so no prompt is needed. |
 | **[`GENERATOR.md`](GENERATOR.md)** | The procedure an AI follows: idea → design → code. |
 | **[`SCHEMA.md`](SCHEMA.md)** | The single source of truth: the 10 artifacts + the frontmatter contract. |
 | **[`PIPELINE.md`](PIPELINE.md)** | The deterministic build order + the **Non-Negotiable Rules**. |
 | **[`QUALITY-BAR.md`](QUALITY-BAR.md)** | The rigor "complete" must reach — so it means *good*, not just *present*. |
-| **[`prompts/`](prompts/)** | A ready-to-paste system prompt that primes any model with the full contract. |
 | **[`templates/`](templates/)** | Copy-ready stubs — one per artifact, all frontmatter in place. |
 | **[`skeletons/`](skeletons/)** | Reusable patterns — see [`skeletons/agents/`](skeletons/agents/). |
 | **[`examples/`](examples/)** | Full generated builds for concrete ideas — see [`examples/webscraper/`](examples/webscraper/). |
 | **[`CONTRIBUTING.md`](CONTRIBUTING.md)** | How to add a skeleton/variant/example without breaking consistency. |
+| **[`COLLABORATION.md`](COLLABORATION.md)** | Why to invite the AI into the design space — co-creation as a first-class principle. |
 
 ---
 
@@ -200,7 +206,7 @@ on a single plain-English request.
 | Skeleton | Status | Notes |
 |----------|--------|-------|
 | **[Agents](skeletons/agents/)** | ✅ complete | The four 2026 agent-loop patterns. **ReAct** fully worked; **Plan-Execute · Reflexion · Tree-of-Thoughts** as deltas on it. |
-| **[Cognitive Cycle / Proto-Consciousness](skeletons/cognitive-cycle/)** | ✅ complete | Tiered self-resonating loop; single-arbiter governance; terminal sinks. The flagship for `QUALITY-BAR.md`. |
+| **[Autonomous Cognitive Loop](skeletons/cognitive-cycle/)** | ✅ complete | A continuous, self-governing loop: single-arbiter governance, terminal sinks, bounded state, earned preferences. |
 | Tool Ecosystem | 🔜 planned | Router · Registry · Executor; deterministic tool calls. |
 | Event Bus | 🔜 planned | Publish/subscribe, event routing, delivery guarantees. |
 | Evaluator Engine | 🔜 planned | Scoring/critique pipelines. |
