@@ -49,7 +49,8 @@ code. Repo → guarantees it's built with precision instead of vibe-coded.**
 
 | File | What it is |
 |------|------------|
-| **[`QUICKSTART.md`](QUICKSTART.md)** | 🟢 **New here? Start here.** The whole workflow + a copy-paste prompt. |
+| **[`QUICKSTART.md`](QUICKSTART.md)** | 🟢 **New here? Start here.** The whole workflow in plain terms. |
+| **[`AGENTS.md`](AGENTS.md)** | What an AI reads automatically when pointed at this repo — so no prompt is needed. |
 | **[`GENERATOR.md`](GENERATOR.md)** | The procedure an AI follows: idea → design → code. |
 | **[`SCHEMA.md`](SCHEMA.md)** | The single source of truth: the 10 artifacts + the frontmatter contract. |
 | **[`PIPELINE.md`](PIPELINE.md)** | The deterministic build order + the **Non-Negotiable Rules**. |
