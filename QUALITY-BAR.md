@@ -2,13 +2,8 @@
 
 > A 10-artifact skeleton can be filled with shallow boilerplate or with real
 > rigor. This file defines the **rigor** — so "complete" means *good*, not just
-> *present*. It's the bar the AI should aim every build at, and the thing to
-> point the system prompt's "standard of quality" slot at.
->
-> The principles below are distilled from a living exemplar: **RFE-Core2**, a
-> companion repo in the author's (Samuel Jackson Grim's) ecosystem whose
-> `CLAUDE.md` and `docs/findings/` demonstrate this standard in production.
-> You don't need access to that repo — the transferable disciplines are here.
+> *present*. It's the bar to aim every build at, and the thing to point the
+> system prompt's "standard of quality" slot at.
 
 ---
 
@@ -17,8 +12,8 @@ A `complete` artifact describes *this* system, with real names, real numbers,
 real thresholds — never generic filler.
 
 - ❌ "The system validates input and handles errors."
-- ✅ "Crystallization fires at `coherence ≥ 0.75`, `stability ≥ 0.60`,
-  `relation ≥ 0.80`; below any threshold the candidate is dropped, not queued."
+- ✅ "A request over 10 MB is rejected with 413 before parsing; a malformed body
+  returns 400 and is never written to the queue."
 
 If an artifact would read the same for a different system, it isn't done.
 
@@ -26,62 +21,71 @@ If an artifact would read the same for a different system, it isn't done.
 The most dangerous rules are the ones whose violation causes **subtle breakage,
 not a loud error**. `Contracts.md` should call these out explicitly, each with
 *why* it matters — and, where possible, **the failure mode it prevents**. An
-invariant justified by a demonstrated failure ("without the `±0.05` cap, repeated
-perturbation erodes the system into the FM2 regime") is far stronger than a bare
+invariant justified by a demonstrated failure is far stronger than a bare
 "don't change this."
 
-> Example shape: *"`arousal`/`valence` are read-only computed properties — do not
-> store them as state; storing double-counts the smoothing already applied."*
+- ✅ "The cache key must include the tenant id. Omit it and tenant A silently
+  serves tenant B's data — no error, just a leak."
+- ✅ "Retry backoff must be capped. Without a ceiling, a downstream outage turns
+  every client into a retry storm that prevents recovery."
 
 ## 3. Guardrails as explicit "do not" — with the legitimate alternative
 For each easy-to-make mistake, state the prohibition **and** where the urge
 should actually go. A guardrail without an alternative just gets violated.
 
-> *"Don't promote a symbol to sacred outside `review_core_promotion()` — a use
-> case that seems to need it almost always wants a different layer."*
+- ✅ "Don't write to the orders table directly from a handler — emit an
+  `OrderPlaced` event; the projector owns that table."
 
 ## 4. Single source of truth / authority hierarchy
 For every kind of decision, exactly one component decides; everything else only
-*produces reports*. Write down who arbitrates and who merely advises. Diffuse
+*produces input*. Write down who decides and who merely advises. Diffuse
 authority is how systems drift.
+
+- ✅ "Pricing is computed in one place (`PricingService`). Callers may *request*
+  a quote; none compute their own — duplicated pricing logic always diverges."
 
 ## 5. Constants carry an audit obligation — and provenance
 A magic number is a contract with everything downstream of it. Record it once,
 and state: *"do not change without auditing every consumer"* — and ideally list
-them. (Weights that must sum to 1.0; bounds that gate safety; etc.)
+them. (Weights that must sum to 1.0; bounds that gate safety; timeouts that
+must stay below an upstream deadline.)
 
-For a constant that was **derived rather than chosen**, go further (the strongest
-form of this discipline):
+For a constant that was **derived rather than chosen**, go further:
 - **Record where it came from** — "computed by X, not picked." A derived value
   with no provenance is indistinguishable from a guess.
 - **Name one authoritative source** and make downstream consumers explicitly
-  subordinate: *"if the running system's value drifts from the source, the source
-  is correct."*
-- **Give a re-derivation protocol** — the checklist to re-validate when an
-  upstream input changes, *before* propagating the new value.
-- **Keep the validator independent.** A tool that certifies a system should not
+  subordinate: *"if a running value drifts from the source, the source is correct."*
+- **Give a re-derivation protocol** — the checklist to re-validate when an input
+  changes, *before* propagating the new value.
+- **Keep the validator independent.** A tool that certifies a system shouldn't
   depend on that system, or it can't stay an honest check.
 
 ## 6. Boundaries: terminal sinks and no hidden feedback
 Be explicit about what is **observe-only** and must never feed back into the
-core loop. Many subtle failures are an observability/diagnostic value quietly
+core path. Many subtle failures are a metric or diagnostic value quietly
 becoming a control input. Name the one-way streets.
 
-## 7. The DecisionLog is an empirical ledger, not a changelog
-Borrowed wholesale from RFE's `findings/` discipline:
+- ✅ "The metrics exporter reads state; nothing in the request path reads the
+  exporter. Don't let a dashboard number become a control signal."
 
-- **Every claim names its control / its reasoning.** A verdict with no basis isn't a decision, it's a guess.
-- **Pre-declare what success *and* failure look like** before committing to a choice — a clean confirming result is the alarm, not the trophy.
-- **Append-only. Supersede, never rewrite.** When a later decision overturns an earlier one, add an entry and mark the old one `superseded`/`invalidated`. The overturning *is* the record.
-- **Negative results count.** "We tried X; it didn't work because Y" saves the next person (or instance) from re-deriving it.
-- **Title the question, not the verdict.** "Auth: sessions vs tokens?" survives a reversal; "Use tokens" becomes a lie the moment you switch.
-- **Separate observation from interpretation.** The facts usually survive; the explanation often changes — keep them in different paragraphs.
-- **Rigor per unit friction.** A ledger nobody maintains is worthless. Keep only the fields that prevent self-deception; reject ceremony.
+## 7. The DecisionLog is an empirical ledger, not a changelog
+- **Every claim names its basis.** A verdict with no reasoning is a guess.
+- **Pre-declare what success *and* failure look like** before committing to a
+  choice — a clean confirming result is the alarm, not the trophy.
+- **Append-only. Supersede, never rewrite.** When a later decision overturns an
+  earlier one, add an entry and mark the old one `superseded`/`invalidated`.
+- **Negative results count.** "We tried X; it didn't work because Y" saves the
+  next person from re-deriving it.
+- **Title the question, not the verdict.** "Auth: sessions vs tokens?" survives
+  a reversal; "Use tokens" becomes a lie the moment you switch.
+- **Separate observation from interpretation.** Facts survive; explanations age.
+- **Rigor per unit friction.** A ledger nobody maintains is worthless. Keep only
+  the fields that prevent self-deception; reject ceremony.
 
 ## 8. Keep the docs in sync with reality
-If an artifact claims a structure, that structure must exist. RFE enforces this
-with a `verify_docs.py` test. At minimum: when behavior changes, the artifact
-changes in the same breath. A drifted artifact is worse than none.
+If an artifact claims a structure, that structure must exist. The cheapest
+enforcement is discipline: when behavior changes, the artifact changes in the
+same commit. A drifted artifact is worse than none — it lies with authority.
 
 ---
 

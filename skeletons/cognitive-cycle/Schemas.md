@@ -8,42 +8,39 @@ filled_by: both
 last_decision: null
 ---
 
-# Schemas — Cognitive Cycle
+# Schemas — Autonomous Cognitive Loop
 
 ## Core Transformation Chain
-The cognitive cycle is the universal ontology made *recursive* — the Action
-feeds back into the Entity's own State, which is what makes it a *self*:
+This loop is the universal ontology made *recursive* — the Action feeds back
+into the Entity's own State, which is what makes it a *self*:
 
 ```
-Entity      = the cognitive self (a persistent identity, not a session)
+Entity      = the system itself (a persistent identity, not a session)
    ↓
-State       = field resonance + emotion + crystallized memory + identity
+State       = working state + consolidated memory + identity
    ↓
-Event       = a percept (external) or an expression (internal, self-generated)
+Event       = an input (external) or an action (internal, self-generated)
    ↓
-Evaluation  = subsystem reports → governance.arbitrate()  (advice → ruling)
+Evaluation  = subsystem reports → governor.decide()   (advice → ruling)
    ↓
-Decision    = a GovernanceDecision (allow / weaken / quarantine / reject)
+Decision    = a ruling (allow / limit / sandbox / reject)
    ↓
-Action      = inject into field · crystallize memory · route behavior by rhythm
-   ↺ (the new field state is the next cycle's State — the loop closes on itself)
+Action      = commit to state · consolidate memory · route next behavior
+   ↺ (the new state is the next cycle's State — the loop closes on itself)
 ```
 
 The closing of the loop **onto its own state** is the difference between an agent
-(acts on the world) and a cognitive cycle (acts on itself, continuously).
+(acts on the world) and an autonomous cognitive loop (acts on itself, continuously).
 
 ## Cognitive Schemas
-- **Identity** — the sacred symbols + witness continuity; the invariant self.
-- **Belief** — crystallized memories that survived the coherence thresholds.
-- **Values** — preferences grown from experience; CORE values are sanctified.
-- **Relationship** — emergent bonds that modulate trust.
+- **Identity** — the protected core + continuity record; the invariant self.
+- **Belief** — consolidated memories that survived the thresholds.
+- **Preferences** — values grown from experience; core ones are protected.
 
 ## Information Schemas
-Percept/expression → field injection (governed) → coherence reading →
-crystallization (if thresholds met) → durable memory. Trust transition happens
-only at governance.
+Input/action → committed to state (governed) → metric reading → consolidation (if
+thresholds met) → durable memory. Trust transitions happen only at the Governor.
 
 ## Transformation Schemas
-- `field → rhythm`: energy-band classification.
-- `EmotionalState → (arousal, valence)`: computed reduction.
-- `(reports) → Decision`: governance arbitration (the one-way authority step).
+- `state → behavior`: routing.
+- `reports → decision`: governance (the one-way authority step).

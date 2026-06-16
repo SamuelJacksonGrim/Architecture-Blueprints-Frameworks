@@ -75,7 +75,5 @@ That is how real systems grow — and how this one did.
 
 ---
 
-*Origin: drafted collaboratively. The practical framing and structure were
-proposed by Copilot at Samuel Jackson Grim's prompting, then refined here — an
-instance of the principle it describes. Architecture and direction:
-Samuel Jackson Grim.*
+*This file was itself drafted collaboratively — proposed by one model, refined
+by another, steered by a human — which is the principle it describes, in action.*

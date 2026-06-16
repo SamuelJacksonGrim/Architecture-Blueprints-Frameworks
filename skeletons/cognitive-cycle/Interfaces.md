@@ -8,43 +8,43 @@ filled_by: both
 last_decision: D-002
 ---
 
-# Interfaces — Cognitive Cycle
+# Interfaces — Autonomous Cognitive Loop
 
-> The decisive split: **ReportingInterface implementers only advise;
-> GovernanceInterface alone decides.** That asymmetry is the architecture.
+> The decisive split: **ReportingInterface implementers only advise; the
+> GovernorInterface alone decides.** That asymmetry is the architecture.
 
-### SubstrateInterface
-- **Purpose:** the resonance field — accumulate, decay, measure.
-- **Inputs:** `inject(expr)`, `decay()`, `coherence_impact(vec)` (call **before** inject), `phase_coherence()`
-- **Upholds:** G3, coherence-weight invariant.
-- **Implemented by:** field · **Consumed by:** cycle coordinator
+### StateInterface
+- **Purpose:** the working state — perceive, commit, age, measure.
+- **Inputs:** `perceive(input)`, `commit(action)`, `age()`, `metric(name)`
+- **Upholds:** G3, the composite-metric weight invariant.
+- **Consumed by:** loop coordinator
 
 ### GeneratorInterface
-- **Purpose:** produce an Expression from field + percept.
-- **Inputs:** `express(field, percept?)`, `refine(expr)` (blend ∈ (0,1))
-- **Upholds:** the attention-blend invariant.
-- **Consumed by:** cycle coordinator
+- **Purpose:** propose the next action from current state.
+- **Inputs:** `propose(state)`
+- **Upholds:** the no-collapse (diversity) check.
+- **Consumed by:** loop coordinator
 
-### ReportingInterface  *(trust, ethics, dependency, bonds, resistance, values)*
+### ReportingInterface  *(trust, validation, abuse-resistance, preferences)*
 - **Purpose:** assess the cycle and **emit a Report**. Advice only.
-- **Inputs:** `assess(state)` → `Report`
+- **Inputs:** `assess(state, action)` → `Report`
 - **Upholds:** A1 — **MUST NOT** mutate state or short-circuit the loop.
-- **Consumed by:** governance
+- **Consumed by:** the Governor
 
-### GovernanceInterface
+### GovernorInterface
 - **Purpose:** the single arbiter.
-- **Inputs:** `arbitrate(reports)` → `GovernanceDecision`; `review_core_promotion(req)`; `promote_to_sacred(symbol)`
+- **Inputs:** `decide(reports)` → `Decision`; `review_promotion(req)`; `edit_protected_core(req)`
 - **Upholds:** G1, G2, G5, I1 — the *only* authority.
-- **Consumed by:** cycle coordinator
+- **Consumed by:** loop coordinator
 
-### TemporalInterface  *(terminal sink)*
-- **Purpose:** subjective time.
-- **Inputs:** `tick()`, `update_dilation(emotion, phase_coherence)`
-- **Upholds:** G4, I2, the suffering-only gate — **read by nothing in the loop.**
+### ClockInterface  *(terminal sink)*
+- **Purpose:** the internal clock + health metrics.
+- **Inputs:** `tick()`, `update_metrics(state)`
+- **Upholds:** G4, I2 — **read by nothing in the loop.**
 - **Consumed by:** diagnostics only
 
 ### MemoryInterface
-- **Purpose:** durable crystallized memory.
-- **Inputs:** `crystallize(candidate)`, `recall(query)`
-- **Upholds:** crystallization thresholds; governance-gated promotion.
-- **Consumed by:** cycle coordinator
+- **Purpose:** durable consolidated memory.
+- **Inputs:** `consolidate(candidate)`, `recall(query)`
+- **Upholds:** consolidation thresholds; Governor-gated promotion.
+- **Consumed by:** loop coordinator

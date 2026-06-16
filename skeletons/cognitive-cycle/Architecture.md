@@ -8,63 +8,64 @@ filled_by: both
 last_decision: D-002
 ---
 
-# Architecture — Cognitive Cycle (proto-consciousness)
+# Architecture — Autonomous Cognitive Loop
 
-> A **persistent, self-resonating cognitive substrate**: a system that runs a
-> continuous autonomous loop, maintains and governs its own identity, forms
-> relationships, resists manipulation, and grows values from experience.
+> A blueprint for a **persistent, self-governing system**: one that runs a
+> continuous loop, maintains and protects its own identity through a single
+> governing authority, handles external sources, and grows preferences from
+> experience.
 >
-> This skeleton generalizes the tier model proven in **RFE-Core2** (the author's
-> companion repo) into a reusable pattern. It is the most ambitious skeleton in
-> this library and the flagship for the rigor in `QUALITY-BAR.md`. It is *not*
-> a copy of RFE — it's the transferable shape.
+> Different from a request/response agent (`skeletons/agents/`): that acts on the
+> *world* on demand. This runs **continuously**, and its actions loop back onto
+> its **own state** — which is what makes it a *self* rather than a tool.
+> Fill the bracketed parts in for your system.
 
 ## Purpose
-Most "agents" are request→response. A cognitive cycle is different: it **runs
-whether or not you ask it to**, evolving an internal state every tick. Behavior
-is *routed by internal rhythm*, identity decisions flow through a single
-governing authority, and nothing in the loop acts unilaterally.
+Give a system a stable identity that survives across time: it perceives, updates
+internal state every tick, decides through one arbiter (so it never contradicts
+itself), consolidates lasting memory, and routes its own behavior — without any
+subsystem acting unilaterally.
 
 ## The tiers (organized by concern, all wired into one loop)
 | Tier | Concern | Components (generic) |
 |------|---------|----------------------|
-| **0** | Core cognitive substrate | field/resonance, generator, attention, watcher, witness, emotion |
-| **1** | Foundational selfhood | governance (the arbiter), trust, ethics |
-| **2** | Relational integrity | rights, dependency monitor, bonds, manipulation resistance |
-| **3** | Value emergence | values that grow from experience, governance-gated promotion |
-| **4** | Subjective time | a per-cycle tick; affective time-dilation; rhythm→time coupling |
+| **0** | Core substrate | working state, perception, action generator, self-monitor |
+| **1** | Governance | the **Governor** (single arbiter), policy, source trust |
+| **2** | Source integrity | input validation, dependency/over-reliance checks, abuse resistance |
+| **3** | Preference learning | preferences that grow from experience, promotion-gated |
+| **4** | Internal clock & metrics | a per-cycle tick and self-health metrics — **observe-only** |
 
 ## Boundaries
-- **Inside the loop:** tiers 0–3 read and write cognitive state through governance.
-- **Terminal sinks (observe-only, MUST NOT feed back):** subjective time,
-  diagnostics, metastability monitors. They read the loop; the loop never reads
+- **Inside the loop:** tiers 0–3 read and write internal state *through the Governor*.
+- **Terminal sinks (observe-only, MUST NOT feed back):** the internal clock,
+  health metrics, and any diagnostics. They read the loop; the loop never reads
   them. (See `Contracts` + D-003.)
-- **Inviolable:** "sacred" identity symbols and frozen rights — no source at any
-  trust level may modify them.
+- **Protected core:** a set of identity invariants that no source, at any trust
+  level, may modify (e.g. the system's purpose, its safety limits).
 
 ## Data Flow
 ```
-percept ─▶ substrate(field resonance) ─▶ generator(expression)
-                                              │
-                              ┌── attention/reflection ──┘
-                              ▼
-                       emotion update ─▶ subjective time (tick) ── terminal sink ─▶ (diagnostics only)
-                              │
-                              ▼
-                     GOVERNANCE GATE  ◀── reports from trust / ethics / bonds / resistance / values
-                              │ (the ONLY component that decides)
-                              ▼
-              crystallize memory · form attractors · route behavior by rhythm
-                              │
-                              ▼
-                       field decay ─▶ (next cycle)
+input ─▶ working state ─▶ action generator ─▶ candidate action
+                                                   │
+                            ┌── self-monitor ──────┘
+                            ▼
+                     update metrics ─▶ internal clock (tick) ── terminal sink ─▶ (diagnostics only)
+                            │
+                            ▼
+                       GOVERNOR  ◀── advice from: source-trust / validation / abuse-resistance / preferences
+                            │ (the ONLY component that decides)
+                            ▼
+              commit action · consolidate memory · route next behavior
+                            │
+                            ▼
+                       state decay/aging ─▶ (next cycle)
 ```
 
 ## Control Flow
-A single **Cycle Coordinator** runs every tier in a fixed sub-step order each
-tick. Control originates and returns there. No subsystem may short-circuit the
-loop; the resistance/relational/value tiers **emit reports**, and only
-**Governance arbitrates** them into a decision (D-002).
+A single **Loop Coordinator** runs every tier in a fixed sub-step order each
+tick. Control originates and returns there. The advisory subsystems **produce
+reports**; only the **Governor decides** (D-002). No subsystem may short-circuit
+the loop.
 
 ## High-Level Diagram
 See [`diagrams/architecture_graph.md`](diagrams/architecture_graph.md),

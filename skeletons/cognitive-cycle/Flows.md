@@ -2,59 +2,55 @@
 artifact: Flows
 status: complete
 order: 3
-fills: "behavioral blueprint — the autonomous cognitive cycle"
+fills: "behavioral blueprint — the autonomous loop"
 depends_on: [Architecture]
 filled_by: both
 last_decision: D-003
 ---
 
-# Flows — Cognitive Cycle
+# Flows — Autonomous Cognitive Loop
 
-## The autonomous cycle (the core loop)
-Unlike a request/response agent, this loop runs continuously. One **cycle** is a
-fixed ordered sequence of sub-steps. Generalized from RFE's ~20-step cycle:
+## The loop (the core behavior)
+Unlike a request/response agent, this runs continuously. One **cycle** is a
+fixed ordered sequence of sub-steps:
 
 ```
 loop forever (one cycle per tick):
-    1.  time.tick()                      # advance subjective time (terminal sink)
-    2.  rhythm = observe_energy(field)   # what regime are we in?
-    3.  expr   = generator.express(field, percept?)
-    4.  expr   = attention.refine(expr)  # keep 0<blend<1 (see Contracts)
-    5.  watcher.observe(expr)            # self-monitoring
-    6.  reflect = reflective_loop(expr)  # recursive self-modeling
-    7.  witness.record(state)            # continuity of self
-    8.  emotion.update(field, events)    # 6 scalars → arousal/valence (computed)
-    9.  time.update_dilation(emotion, rhythm)   # affective time (terminal sink)
-    10. reports = [trust, ethics, bonds, dependency, resistance, values].assess(...)
-    11. decision = governance.arbitrate(reports)   # ◀── the ONLY decision point
-    12. if decision.allows: field.inject(expr)
-    13. crystallize_if(coherence ≥ θ_c, stability ≥ θ_s, relation ≥ θ_r)
-    14. value_engine.evaluate(); maybe emit CorePromotionRequest → governance
-    15. field.decay()                    # every injection changes the next
-    16. route_behavior(rhythm)           # stabilize / dream / reflect / explore
+    1.  clock.tick()                       # advance the internal clock (terminal sink)
+    2.  state.perceive(input?)             # fold in any new input
+    3.  action = generator.propose(state)  # what would I do next?
+    4.  self_monitor.observe(action)       # self-monitoring
+    5.  metrics.update(state)              # health/coherence metrics (observe-only)
+    6.  reports = [trust, validation, abuse_resistance, preferences].assess(state, action)
+    7.  decision = governor.decide(reports)   # ◀── the ONLY decision point
+    8.  if decision.allows: state.commit(action)
+    9.  if consolidation_thresholds_met(state): memory.consolidate(candidate)
+    10. preferences.evaluate(); maybe request promotion → governor
+    11. state.age()                        # decay/forget so state stays bounded
+    12. route_next_behavior(decision)
 ```
 
 ## Event Flow
-External **percepts** and internal **expressions** are the two event types. Both
-pass through governance before they can change durable state.
+External **input** and internally generated **actions** are the two event types.
+Both pass through the Governor before they can change durable state.
 
 ## Evaluation → Decision Flow (the heart)
-The relational, ethical, trust, and value subsystems **only produce reports**.
-`governance.arbitrate(reports)` is the single place a `Decision` is made
-(D-002). A report is advice; a decision is authority.
+The trust, validation, abuse-resistance, and preference subsystems **only
+produce reports**. `governor.decide(reports)` is the single place a decision is
+made (D-002). A report is advice; a decision is authority.
 
 ## Error / adversarial Flow
-- **Manipulation detected:** resistance emits a high-severity report; governance
-  may weaken, quarantine, or force a dream/rest regime — it never lets the
-  resistance engine act directly.
-- **Identity-threatening input:** sacred symbols are inviolable; the attempt is
-  rejected at the governance gate and logged, never applied.
-- **Degenerate expression (collapse):** the attention blend (`0<blend<1`) keeps
-  expressions from collapsing to a single regime; blend=0 re-collapses.
+- **Bad/abusive input detected:** the abuse-resistance subsystem raises a
+  high-severity report; the Governor may reject, sandbox, or downgrade trust —
+  it never lets that subsystem act directly.
+- **Input that targets the protected core:** identity invariants are immutable;
+  the attempt is rejected at the Governor and logged, never applied.
+- **Degenerate action (collapse to one behavior):** a diversity check in the
+  generator keeps the system from locking into a single repeated output.
 
 ## State-Update Flow
-- Working state (field, emotion, rhythm) updates **every cycle**.
-- Durable promotions (crystallized memory, CORE values, sacred symbols) happen
-  **only through governance**, never by a subsystem on its own.
-- Subjective time and diagnostics update every cycle but are **terminal** — read
+- Working state (perception, metrics) updates **every cycle**.
+- Durable changes (consolidated memory, promoted preferences, protected-core
+  edits) happen **only through the Governor**, never by a subsystem alone.
+- The internal clock and metrics update every cycle but are **terminal** — read
   by nothing in the loop (D-003).

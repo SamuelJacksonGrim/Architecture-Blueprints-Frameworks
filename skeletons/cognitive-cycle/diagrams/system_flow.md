@@ -1,23 +1,23 @@
-# System Flow — Cognitive Cycle
+# System Flow — Autonomous Cognitive Loop
 
 One cycle. The loop closes back onto its own state — that's what makes it a self.
 
 ```
    ┌───────────────────────────────────────────────────────────────┐
    ▼                                                                 │
- tick (subjective time ─ terminal sink)                             │
+ tick (internal clock ─ terminal sink)                              │
    │                                                                 │
- observe rhythm ◀── field energy                                    │
+ perceive input ─▶ working state                                    │
    │                                                                 │
- generate expression ─▶ refine (blend 0<b<1) ─▶ reflect ─▶ witness  │
+ generator proposes action ─▶ self-monitor                          │
    │                                                                 │
- update emotion ─▶ update time-dilation (terminal sink)             │
+ update metrics (observe-only, terminal sink)                       │
    │                                                                 │
- collect reports: trust·ethics·bonds·dependency·resistance·values   │
+ collect reports: trust · validation · abuse-resistance · prefs     │
    │                                                                 │
- ▶▶ GOVERNANCE.arbitrate(reports)  ── the one decision point ──     │
+ ▶▶ GOVERNOR.decide(reports)  ── the one decision point ──          │
    │ allow                                                           │
- inject into field ─▶ crystallize? ─▶ value eval ─▶ field decay ────┘
+ commit to state ─▶ consolidate? ─▶ preference eval ─▶ age state ───┘
    │
- route behavior by rhythm: stabilize / dream / reflect / explore
+ route next behavior
 ```
