@@ -68,30 +68,29 @@ becoming a control input. Name the one-way streets.
 - ✅ "The metrics exporter reads state; nothing in the request path reads the
   exporter. Don't let a dashboard number become a control signal."
 
-## 7. The DecisionLog is an empirical ledger, not a changelog
-- **Every claim names its basis.** A verdict with no reasoning is a guess.
-- **Pre-declare what success *and* failure look like** before committing to a
-  choice — a clean confirming result is the alarm, not the trophy.
-- **Append-only. Supersede, never rewrite.** When a later decision overturns an
-  earlier one, add an entry and mark the old one `superseded`/`invalidated`.
-- **Negative results count.** "We tried X; it didn't work because Y" saves the
-  next person from re-deriving it.
-- **Title the question, not the verdict.** "Auth: sessions vs tokens?" survives
-  a reversal; "Use tokens" becomes a lie the moment you switch.
-- **Separate observation from interpretation.** Facts survive; explanations age.
-- **Rigor per unit friction.** A ledger nobody maintains is worthless. Keep only
-  the fields that prevent self-deception; reject ceremony.
+## 7. The DecisionLog records *why*, not just *what*
+Keep it light but honest: record what was chosen, what was rejected, and the
+reason. **Title the question, not the verdict** ("Auth: sessions vs tokens?"),
+and **supersede, never rewrite** when you change your mind. The goal is simply
+that nobody re-litigates a settled choice six months later.
 
 ## 8. Keep the docs in sync with reality
 If an artifact claims a structure, that structure must exist. The cheapest
 enforcement is discipline: when behavior changes, the artifact changes in the
 same commit. A drifted artifact is worse than none — it lies with authority.
 
+## 9. Prove it runs — don't just write it
+"Wrote the code" and "the code works" are different claims. Before declaring a
+build done, **run it**: a smoke test of the main path (the happy path end to
+end) at minimum. This is the single biggest thing separating a real build from
+vibe-coding — most untested code was never actually executed. If you can't run
+it in the build environment, say so explicitly rather than implying it works.
+
 ---
 
 ## How to use this file
 - **Building?** Skim this before declaring an artifact `complete`. The Step 10
   self-audit in `PIPELINE.md` checks structure; this checks *depth*.
-- **Reviewing?** These eight are the rubric.
-- **Setting the bar for a model?** Point the "standard of quality" line in
-  `prompts/system-prompt.md` here.
+- **Reviewing?** These nine are the rubric.
+- **Setting the bar for a model?** Tell it to hold the build to this file (the
+  paste-able prompt in `QUICKSTART.md` already does).

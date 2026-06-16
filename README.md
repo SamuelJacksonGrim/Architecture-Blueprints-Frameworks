@@ -54,7 +54,6 @@ code. Repo → guarantees it's built with precision instead of vibe-coded.**
 | **[`SCHEMA.md`](SCHEMA.md)** | The single source of truth: the 10 artifacts + the frontmatter contract. |
 | **[`PIPELINE.md`](PIPELINE.md)** | The deterministic build order + the **Non-Negotiable Rules**. |
 | **[`QUALITY-BAR.md`](QUALITY-BAR.md)** | The rigor "complete" must reach — so it means *good*, not just *present*. |
-| **[`prompts/`](prompts/)** | A ready-to-paste system prompt that primes any model with the full contract. |
 | **[`templates/`](templates/)** | Copy-ready stubs — one per artifact, all frontmatter in place. |
 | **[`skeletons/`](skeletons/)** | Reusable patterns — see [`skeletons/agents/`](skeletons/agents/). |
 | **[`examples/`](examples/)** | Full generated builds for concrete ideas — see [`examples/webscraper/`](examples/webscraper/). |

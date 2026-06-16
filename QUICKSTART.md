@@ -20,12 +20,12 @@ Describe your idea in plain English. Be as vague or specific as you like:
 >   instantiate all 10 artifacts, and walk the pipeline in order.
 > - Fill each design note for *my* idea, log decisions in `DecisionLog`, then
 >   derive the folder tree and **write the actual code** against the design.
+> - Hold the build to `QUALITY-BAR.md`. **Smoke-test the main path before you
+>   call it done** — don't tell me it works if you haven't run it.
 > - Run the Step 10 self-audit, then explain to me — in plain language — what
->   you built, how to run it, and how it maps to what I asked for.
+>   you built, how to run it, that it ran, and how it maps to what I asked for.
 >
 > My idea: **<paste your idea here>**
-
-(A ready-to-copy version lives in [`prompts/system-prompt.md`](prompts/system-prompt.md).)
 
 ## 3. Look at what it shows you
 
