@@ -2,7 +2,7 @@
 artifact: Intent
 status: stub
 order: 0
-fills: "the human's goal in eight lines — filled before Architecture"
+fills: "the human's goal, plus the class/depth decision a later entity can inspect"
 depends_on: []
 filled_by: both
 last_decision: null
@@ -21,5 +21,20 @@ last_decision: null
 - **Done when:**
 - **Secrets / private data / irreversible actions:** none / listed here
 - **Language / host (if the human named one):**
-- **Depth (thin | standard | full):**
-- **Class (from SELECTOR.md):**
+
+## Selector decision
+
+Class and depth are independent axes. Do not treat depth as a complexity score.
+
+```yaml
+class:            # cli | library | pipeline | service | ui | agent-loop | cognitive-cycle | unknown
+depth:            # thin | standard | full
+reasons:          # structural conditions that hold *now*
+  - # e.g. single_process | no_network_boundary | no_irreversible_action
+escalate_if:
+  - network_boundary_added
+  - secrets_introduced
+  - persistent_state_added
+  - module_separation_required
+  - reusable_skeleton_requested
+```
