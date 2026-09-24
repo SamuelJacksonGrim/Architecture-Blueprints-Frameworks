@@ -39,6 +39,11 @@ Pick the class that owns the main loop. Read only that skeleton.
 | observe → hypothesize → test → report | `skeletons/diagnostic/` |
 | `pipeline` `service` `cli` `library` `ui` `unknown` | closest skeleton above, else `templates/` |
 
+`cognitive-cycle` only if the thing *is* a persistent self acting on its own
+state. A CLI, library, one-shot function, or request/response agent is a
+different class. Catalog siblings (evaluator, diagnostic, tool-ecosystem) are
+not imported by selecting this class.
+
 ---
 
 ## Step C — Depth (canonical escalation)
