@@ -15,9 +15,12 @@ You are not asked to design it. You are asked what you want.
 
 ## 2. Point an AI at this repo
 
-> *"Build the plant-watering app using this repo."*
+> *"Build the plant-watering app using this repo. Read AGENTS.md first."*
 
-No special prompt. [`AGENTS.md`](AGENTS.md) is what it reads.
+No special prompt beyond that. [`AGENTS.md`](AGENTS.md) is the entity's front
+door. Chat models that only follow links get sent there from the README.
+Coding agents that auto-discover instruction files are pointed there by the
+vendor stubs.
 
 Optional four lines if you already know them: Want / Must not / Runs where /
 Done when. If you skip them, the AI fills an Intent Card from what you said

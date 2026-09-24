@@ -1,6 +1,9 @@
 # AGENTS.md — for any AI building from this repo
 
-This file is for you, not the human. No extra prompt is required.
+This is the first file you read after the README. It is for you, not the human.
+No extra prompt is required.
+
+Next file: [`SELECTOR.md`](SELECTOR.md). Load order lives only there.
 
 ## Division of labor
 
@@ -34,3 +37,5 @@ same as pre-approved.
 - Treat depth as a complexity score.
 - Restate the load list.
 - Treat [`OPERATOR.md`](OPERATOR.md) as required.
+- Skip this file because a vendor stub (`CLAUDE.md`, `GEMINI.md`, Copilot
+  instructions) exists. Those files only point here.
