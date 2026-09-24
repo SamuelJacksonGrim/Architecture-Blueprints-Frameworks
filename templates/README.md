@@ -3,14 +3,16 @@ artifact: README
 status: stub
 order: 10
 fills: "front door — what/why/problem/components for the instantiated system"
-depends_on: [Architecture, Flows, Contracts, Modules]
+depends_on: [Architecture, Flows, Contracts]
 filled_by: both
 last_decision: null
 ---
 
 # <System Name>
 
-> Written **last** (pipeline step 10), once the rest is true.
+> Written **last** among the sequential artifacts, once what this depth
+> required is true. Major components come from Architecture at `thin` depth,
+> and from Modules when that artifact was completed.
 
 ## What is this?
 <!-- One or two sentences. -->
@@ -22,10 +24,9 @@ last_decision: null
 <!-- The pain it removes. -->
 
 ## Major components
-<!-- Pull from Modules.md / Architecture.md. -->
+<!-- Architecture.md always. Modules.md if that artifact is complete. -->
 
 ## Artifact status
-<!-- Quick table so any entity sees what's left to fill. -->
 | Artifact | Status |
 |----------|--------|
 | Architecture | stub |
@@ -34,7 +35,7 @@ last_decision: null
 | Types | stub |
 | Schemas | stub |
 | Interfaces | stub |
-| Dependencies | stub |
 | Modules | stub |
+| Dependencies | stub |
 | DecisionLog | stub |
 | README | stub |

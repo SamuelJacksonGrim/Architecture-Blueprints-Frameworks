@@ -1,162 +1,57 @@
 # 🧬 SCHEMA — The 10-Artifact Architecture Ontology
 
-> This is the **single source of truth** for what an architecture skeleton *is*.
-> The README pitches the idea; this file defines it. Skeletons and templates
-> reference this document — they never re-define the artifacts themselves.
-> When the definition of an artifact changes, it changes **here**, once.
+Fill *order* is `PIPELINE.md`. How much to speak is `SELECTOR.md`.
 
-This repo treats architecture as **information, not code**. Any system —
-a tool ecosystem, an agent, an event bus, a cognitive cycle — can be fully
-described by the same ten artifacts. That uniformity is the whole point:
-it makes architectures *comparable, composable, and fillable by any
-intelligent entity* (human, Claude, Copilot, GPT, Gemini, Grok, or whatever
-comes next).
+The ten names are closed. How much of the language a build must speak is not.
 
 ---
 
-## The Frontmatter Contract
-
-Every artifact file in this repo — template *or* filled — opens with the same
-YAML frontmatter. This is the **machine-parseable layer**: it lets an entity
-look at a half-finished skeleton and know exactly what to do next without
-re-reading prose.
+## Frontmatter
 
 ```yaml
 ---
-artifact: Architecture        # one of the 10 canonical names
+artifact: Architecture
 status: stub                  # stub | partial | complete
-order: 1                      # position in the build pipeline (see PIPELINE.md)
-fills: "structural blueprint — subsystems, boundaries, data & control flow"
-depends_on: []                # artifacts that should exist before this one
-filled_by: both               # human | entity | both
-last_decision: null           # optional: ref to a DecisionLog entry id
+order: 1                      # sequential artifacts only; DecisionLog is 99
+fills: "structural blueprint"
+depends_on: []
+filled_by: both
+last_decision: null
 ---
 ```
 
-### Field meanings
+### Dependency rule
 
-| Field | Meaning |
-|-------|---------|
-| `artifact` | The canonical artifact name. Never invent new ones. |
-| `status` | `stub` = structure only; `partial` = some content; `complete` = ready to depend on. |
-| `order` | Build-pipeline position. See `PIPELINE.md`. |
-| `fills` | One-line statement of what this artifact is responsible for. |
-| `depends_on` | Artifacts that should be at least `partial` before this is filled. |
-| `filled_by` | Who is expected to author it — guidance, not a lock. |
-| `last_decision` | Optional pointer (e.g. `D-003`) into `DecisionLog.md`. |
+- A dependency must be `partial` or `complete` before dependent work may begin.
+- A dependent artifact may not become `complete` while a required dependency remains `stub`.
 
-**Instantiation Rule:** when a skeleton is copied into a new project, *nothing
-is optional at the structural level*. All ten files exist from the start as
-stubs. A system is only **valid** once every artifact exists; it is **complete**
-once every artifact's `status: complete`. Partial filling is allowed — missing
-*structure* is not.
+### Depth self-consistency
 
-### What an INVALID instantiation looks like
+An artifact required `complete` at a given depth may only `depends_on` artifacts
+that same depth also requires `complete`. Otherwise the depth cannot finish.
 
-If you (the building entity) produce any of these, you have violated the rule —
-stop and fix it before continuing:
+### Three states
 
-- ❌ **Missing artifact.** Only 8 of the 10 files exist. (Wrote `Architecture.md`
-  and `Flows.md`, "didn't need" `Schemas.md`.) → All ten must exist, even if some
-  are still `status: stub`.
-- ❌ **Malformed frontmatter.** An artifact has no YAML block, or is missing
-  `artifact` / `status` / `order`, or uses a `status` outside
-  `stub | partial | complete`. → Every file opens with the full contract.
-- ❌ **Invented artifact name.** A file named `Config.md` or `API.md` at the
-  artifact level. → The ten names are closed; put that content *inside* the
-  right artifact (config → `Contracts`/`Types`; API → `Interfaces`).
-- ❌ **Out-of-order filling.** `Contracts.md` is `complete` while `Flows.md` is
-  still `stub`. → Respect `depends_on`; a thing can't be `complete` before what
-  it depends on is at least `partial`.
-- ❌ **Silent decision.** A non-obvious choice was made but no `D-XXX` entry
-  exists in `DecisionLog.md`. → Log it and reference it from the artifact's
-  `last_decision`.
+| State | Meaning |
+|---|---|
+| **structurally valid** | All ten files exist. |
+| **depth-complete** | Every artifact this depth requires is `complete`. A build is done. |
+| **fully complete** | All ten `complete`. Reusable skeleton. |
+
+### Construction vs capture
+
+Sequential artifacts have an order. **DecisionLog does not.** Construction is
+sequential; decision capture is continuous. Writing DecisionLog only at the end
+is a failure.
 
 ---
 
-## The 10 Artifacts
+## The 10 artifacts
 
-### 1. Architecture — *the city map*
-The structural blueprint. Major subsystems, boundaries, data flow, control
-flow, high-level diagrams. The heart of the system.
+Sequential: Architecture → Flows → Contracts → Types → Schemas → Interfaces → Modules → Dependencies → README.
 
-### 2. Flows — *the movie*
-The behavioral blueprint. Request flow, event flow, execution flow, error flow,
-state-update flow. The most reusable part of any architecture.
-
-### 3. Contracts — *the constitution*
-Guarantees, assumptions, invariants, pre/post-conditions. Contracts prevent
-architectural drift. *(They come **after** Flows — you can't constrain a
-behavior you haven't described. See `DecisionLog` D-001.)*
-
-### 4. Types — *the vocabulary*
-Core domain types, shared primitives, enums, identifiers, structural schemas.
-The dictionary the architecture speaks.
-
-### 5. Schemas — *the conceptual ontology*
-Entity → State → Event → Evaluation → Decision → Action. Cognitive schemas,
-information schemas, transformation schemas. Where architectures become
-generalizable.
-
-### 6. Interfaces — *the plug points*
-Tool interface, evaluator interface, router interface, state-store interface,
-execution interface. Interfaces make modules interchangeable.
-
-### 7. Dependencies — *the dependency graph*
-Allowed and forbidden dependency directions, module hierarchy, import rules.
-This is what prevents entropy.
-
-### 8. Modules — *the organizational chart*
-Module list, ownership, responsibilities, boundaries. The decomposition layer.
-
-### 9. DecisionLog — *the architectural memory*
-Decisions, alternatives, reasons, dates. This is the artifact that lets
-*different intelligences across time* avoid re-litigating settled choices.
-Maintained continuously, not in a single pass.
-
-### 10. README — *the front door*
-What is this? Why does it exist? What problem does it solve? What are the major
-components? The elevator pitch for the instantiated system.
+Continuous: DecisionLog.
 
 ---
 
-## The Artifact Stack (hierarchy of meaning)
-
-```
-          ┌──────────────────────┐
-          │     Architecture     │   structure
-          └──────────┬───────────┘
-                     ↓
-          ┌──────────────────────┐
-          │        Flows         │   behavior
-          └──────────┬───────────┘
-                     ↓
-          ┌──────────────────────┐
-          │       Contracts      │   guarantees
-          └──────────┬───────────┘
-                     ↓
-          ┌──────────────────────┐
-          │   Types  +  Schemas  │   vocabulary & ontology
-          └──────────┬───────────┘
-                     ↓
-          ┌──────────────────────┐
-          │ Interfaces · Deps ·  │   wiring & decomposition
-          │ Modules              │
-          └──────────────────────┘
-
-  DecisionLog runs vertically through all of it — it records *why*.
-```
-
----
-
-## Cross-Skeleton Compatibility
-
-Because every skeleton uses these exact ten artifacts with the same meaning:
-
-- `Contracts.md` from an Agent system is directly comparable to `Contracts.md`
-  in an Event Bus system.
-- `Flows.md` are structurally interchangeable across skeletons.
-- `Types.md` define a shared language layer across all systems.
-
-This enables **cross-system reasoning and architectural reuse** — the real
-payoff of standardization.
+Same names across skeletons. Shared language. Not a requirement to recite all of it.
