@@ -2,24 +2,22 @@
 
 > This is the procedure an **AI** follows when a non-technical human shows up
 > with an idea. The human says one sentence — *"build me a webscraper for X"* —
-> and the AI does the rest: it designs the system, writes the **ten design
-> notes** (`Architecture`, `Flows`, `Types`, `Schemas`, `Contracts`,
-> `Interfaces`, `Dependencies`, `Modules`, `DecisionLog`, `README`), lays out the
-> folder/file tree, and **writes the actual code**.
+> and the AI does the rest: Intent Card, design notes at the right depth,
+> folder tree, and **code that has been run** (or an honest "could not run").
 >
-> The human writes nothing and reads none of these notes. They exist so the AI
-> knows *exactly* what to build before it builds it — which is the difference
-> between a precise build and vibe-coding. (See the README's "Who does what".)
+> The human writes nothing and reads none of these notes unless they want to.
 
 ---
 
 ## 🚫 Before you start: the rules are non-negotiable
 
-This procedure is a contract, not a buffet. Read **`PIPELINE.md` → "Non-Negotiable
-Rules"** and follow them exactly: all 10 stubs first, exact order, every decision
+Read **`SELECTOR.md` first**, then **`PIPELINE.md` → "Non-Negotiable Rules"**:
+Intent Card and depth, all 10 stubs first, exact fill order, every decision
 logged, no untraceable code, and the mandatory self-audit before "done."
-Compressing or "streamlining" the process is the failure mode this repo exists to
-prevent — don't reinvent it.
+
+Compressing the *order* is a failure. Filling all ten artifacts to `complete`
+for a thin CLI is also a failure — that is cargo cult, and SELECTOR exists to
+stop it.
 
 ---
 
@@ -29,98 +27,71 @@ prevent — don't reinvent it.
 scale, deadline), or "ask me questions first."
 
 **Output, three layers:**
-1. **The design** — the ten artifacts from `SCHEMA.md`, *filled for this idea*
-   (the AI's own spec; the human never reads these).
-2. **The source tree** — the actual folders/files the design implies
-   (`ProjectStructure.md` + a real directory layout).
-3. **The code** — the working implementation, written by the AI against the
-   design, plus a plain-English explanation of what it does and how to run it.
+1. **The design** — artifacts from `SCHEMA.md` filled to the chosen depth.
+2. **The source tree** — `ProjectStructure.md` + a real directory layout.
+3. **The code** — implementation against the design, plus a plain-English
+   explanation of what it does and how to run it.
 
 ---
 
 ## The procedure
 
-### Step 0 — Classify the idea
-Decide what *kind* of system this is, because that picks the starting point:
+### Step 0 — Select (do not skip)
+Follow **`SELECTOR.md`** end to end: Intent Card, class, depth, load list.
+Do not read skeletons you did not pick.
 
-| If the idea is… | Start from… |
+| If the class is… | Start from… |
 |---|---|
-| an autonomous, tool-using, looping system | a skeleton in `skeletons/agents/` |
-| a known pattern we already have a skeleton for | that skeleton |
-| anything else (webscraper, API, ETL, CLI, service…) | the blank `templates/` |
+| `agent-loop` | a skeleton in `skeletons/agents/` (ReAct unless a named failure mode needs a variant) |
+| `cognitive-cycle` | `skeletons/cognitive-cycle/` |
+| anything else, or `unknown` | the blank `templates/` |
 
-> If no skeleton fits, you are **creating a new one** as you go — fill the
-> templates, and the result becomes a reusable skeleton for the next person.
+> If no skeleton fits, you are **creating a new one** as you go. Use **full**
+> depth so the result can become a reusable skeleton.
 
 ### Step 1 — Instantiate
-Copy the chosen starting point. All ten artifact stubs now exist. *Nothing is
-optional at the structural level* (the Instantiation Rule from `SCHEMA.md`).
+Copy the chosen starting point. All ten artifact stubs now exist, plus
+`INTENT.md`. *Nothing is optional at the structural level.* Completeness
+follows the depth from SELECTOR.
 
 ### Step 2 — Walk the pipeline
 Fill the artifacts **in `PIPELINE.md` order**, because each depends on the one
-before:
-
-```
-Architecture → Flows → Contracts → Types → Schemas
-            → Interfaces → Dependencies → Modules → README
-            (DecisionLog maintained throughout)
-```
-
-At each artifact: read its frontmatter (`depends_on`, `order`), fill it for the
-*specific* idea, set `status: complete`. Log any non-obvious choice in
-`DecisionLog`.
+before. At each artifact your depth requires: fill it for *this* idea, set
+`status: complete`. Leave the rest `stub`. Log non-obvious choices.
 
 ### Step 3 — Derive the source tree
-From `Modules.md` + `Dependencies.md`, emit `ProjectStructure.md`: the real
-folder/file layout. One module → roughly one folder/package. The artifacts are
-the *design*; this is the *scaffold* the design maps onto.
+From `Modules.md` + `Dependencies.md` (or from Architecture + Flows at thin
+depth), emit `ProjectStructure.md`.
 
 ### Step 4 — Write the code
-Implement each module into its folder, using the artifacts as the spec:
-- `Types.md`/`Schemas.md` → the data structures.
-- `Interfaces.md` → the function/class signatures.
-- `Contracts.md` → the validations, guards, and tests that must hold.
-- `Flows.md` → the control flow that wires it together.
+Implement against the notes you actually filled:
+- Types / Schemas → data structures (if those artifacts were completed)
+- Interfaces → signatures (if completed)
+- Contracts → validations, guards, tests
+- Flows → control flow
 
-Because every piece was pinned down first, the code is *implementing a plan*,
-not improvising one. That's the whole anti-vibe-coding mechanism: the AI never
-writes a line it can't trace back to a decision in the design notes.
+No line you cannot trace to a design note this depth required.
 
 ### Step 5 — Prove it runs (smoke test)
-Don't hand over code you haven't run. Write and run a **smoke test of the main
-path** — the happy path, end to end — and any quick checks the `Contracts`
-demand. "Wrote it" and "it works" are different claims; this step is what makes
-the difference. If the build environment can't run it, say so plainly instead of
-implying it works. (See `QUALITY-BAR.md` §9.)
+Run the main path. If you cannot, say so. Do not imply it works.
 
 ### Step 6 — Show the human, in their language
-Present the result the way a non-coder can judge it: *what it does*, *how to run
-it*, *that it ran* (the smoke test passed), and *whether it matches what they
-asked for* — not a wall of code. The human confirms it's the thing they meant (or
-describes the difference), and the AI iterates. They never read an artifact to do this.
+What it does. How to run it. That it ran (or why not). Class and depth you
+picked. Assumptions you logged. They confirm or correct. They never have to
+read an artifact to do this.
 
 ---
 
 ## What "done" looks like
 
-A folder like this (see [`examples/webscraper/`](examples/webscraper/) for a
-real, complete one):
-
 ```
 <project>/
-├── README.md              ← what & why, for this specific system
-├── architecture/          ← the 10 design artifacts, all filled
-│   ├── Architecture.md  Flows.md  Contracts.md  Types.md  Schemas.md
-│   ├── Interfaces.md  Dependencies.md  Modules.md  DecisionLog.md
-│   └── diagrams/
-├── ProjectStructure.md    ← the source tree the design implies
-└── src/ (…)               ← the working code the AI writes against that design
+├── INTENT.md
+├── README.md
+├── architecture/          ← 10 artifacts; only some may be complete
+├── ProjectStructure.md
+└── src/                   ← real code, not .keep files
 ```
 
----
-
-## See it work
-
-[`examples/webscraper/`](examples/webscraper/) is this exact procedure run on the
-idea *"a webscraper that aggregates product prices."* Read it as the reference
-for what a generated schematic looks like.
+[`examples/webscraper/`](examples/webscraper/) is a **design-only** schematic.
+Its `src/` folders are placeholders. Do not treat it as a running build.
