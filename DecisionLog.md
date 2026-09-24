@@ -10,10 +10,9 @@ The repo eats its own dog food. Decisions about *the framework* live here.
 
 **Chosen:** Architecture → Flows → Contracts.
 
-**Rejected:** Contracts-first (“define the laws, then the movie”).
+**Rejected:** Contracts-first.
 
 **Why:** A contract about a behavior you have not described is a slogan.
-Recorded in `PIPELINE.md`. Kept.
 
 ---
 
@@ -21,15 +20,10 @@ Recorded in `PIPELINE.md`. Kept.
 
 **Question:** Must every build fill all ten artifacts to `complete`?
 
-**Chosen:** All ten files exist from minute zero. Depth (`thin` / `standard` /
-`full`) decides which ones must reach `complete`. See `SELECTOR.md`.
+**Chosen:** All ten files exist from minute zero. Depth decides which reach
+`complete`. See `SELECTOR.md` and the three states in `SCHEMA.md`.
 
 **Rejected:** (a) skip creating files; (b) require all ten `complete` for a CLI.
-
-**Why:** Auto-propagating a full cathedral for every application was the
-original impulse and the original failure. Systems differ. The language stays
-universal. The *volume* does not. Leaving Types `stub` at `thin` depth is
-obedience to SELECTOR, not a skipped pipeline.
 
 **Date:** 2026-09-24
 
@@ -37,15 +31,28 @@ obedience to SELECTOR, not a skipped pipeline.
 
 ### D-003 — Multi-model routing is an operator note, not the spine
 
-**Question:** Should the repo require a Gemini → GPT → Copilot → Claude/Grok
-assembly line?
+**Question:** Require a Gemini → GPT → Copilot → Claude/Grok line?
 
-**Chosen:** Optional `OPERATOR.md`. Seams (Intent, Shape, Invariants, Wiring)
-are named. Vendor roster is a field note.
+**Chosen:** Optional `OPERATOR.md`. Seams stay. Vendor roster is a field note.
 
-**Rejected:** Baking current model personalities into `PIPELINE.md`.
+**Date:** 2026-09-24
 
-**Why:** Model strengths rot. The seams are the ten artifacts in work-order
-clothes. A single model must still be able to finish a build.
+---
+
+### D-004 — Class ≠ depth; implicit-decision test; one depends_on meaning
+
+**Question:** Is depth a complexity score? When in doubt, go thinner?
+
+**Chosen:**
+- Class answers *what kind*. Depth answers *how much structure must be explicit*.
+  Independent axes. No complexity score, no fourth depth.
+- Governing test: the thinnest depth that can express every decision the system
+  cannot safely leave implicit.
+- `depends_on` meaning lives only in `SCHEMA.md`: partial-or-complete to *start*;
+  not-stub before the dependent artifact may itself be `complete`.
+- Completeness states: structurally valid / depth-complete / fully complete.
+
+**Rejected:** "When in doubt, go thinner" as the governing rule (guards
+overbuilding, under-guards implicit decisions in code).
 
 **Date:** 2026-09-24
