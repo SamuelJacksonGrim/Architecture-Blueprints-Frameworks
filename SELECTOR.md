@@ -1,105 +1,83 @@
 # SELECTOR — classify, then build only what this system needs
 
-> Read this **before** `GENERATOR.md`.
-> The ten artifacts are the language. This file decides *which dialect* and
-> *how much of it* to speak.
+> Read this **before** anything else except this sentence.
+> Load order lives **only here**. AGENTS, GENERATOR, and PIPELINE point here.
+> They do not restate a second list.
 
 Two independent axes. Do not collapse them into a complexity score.
 
-| Axis | Question | Not a question it answers |
-|---|---|---|
-| **Class** | What *kind* of thing is this? | How hard is it? How big is it? |
-| **Depth** | How much structure must be made explicit? | What genre is it? |
-
-A 30-line script with an irreversible external action can be `cli` + `standard`.
-A 500-line single-purpose transform can be `pipeline` + `thin`.
-Never score files, endpoints, or "complexity / 10."
+| Axis | Question |
+|---|---|
+| **Class** | What *kind* of thing is this? |
+| **Depth** | How much structure must be made explicit? |
 
 ---
 
 ## Step A — Intent Card
 
-Copy `templates/INTENT.md` into the new project as `INTENT.md`.
-If the human left lines blank, fill them from the conversation and show once.
-Cap: **three** blocking questions. Otherwise assume and log `D-XXX`.
+Copy `templates/INTENT.md` to the project as `INTENT.md`.
+Blank lines: fill from the conversation, show once. Cap: three questions.
+Otherwise assume and log `D-XXX`.
 
-Do not invent a stack the human did not name.
+**Stack rule:** do not *silently* impose a stack. If implementation needs a
+technology the human did not name, choose the smallest stack that can pass a
+smoke test, record it in `DecisionLog`, and show it to the human. You may
+decide. You may not hide the decision.
 
 ---
 
-## Step B — Class (what kind)
+## Step B — Class
 
-Pick one. If two apply, pick the one that owns the *main loop*.
+Pick the class that owns the main loop.
 
-| Class | The thing is… | Default skeleton |
-|---|---|---|
-| `agent-loop` | think → act → observe, tools, memory | `skeletons/agents/` (ReAct unless a failure mode demands a variant) |
-| `cognitive-cycle` | continuous self-governing loop, bounded state | `skeletons/cognitive-cycle/` |
-| `pipeline` | ingest → transform → emit | `templates/` |
-| `service` | request/response, long-lived process | `templates/` |
-| `cli` | invoked, does a job, exits | `templates/` |
-| `library` | imported by other code | `templates/` |
-| `ui` | humans click or type as the primary loop | `templates/` |
-| `unknown` | none of the above | `templates/` — you are forging a skeleton |
+| Class | Default skeleton |
+|---|---|
+| `agent-loop` | `skeletons/agents/` (ReAct unless a named failure mode needs a variant) |
+| `cognitive-cycle` | `skeletons/cognitive-cycle/` |
+| `pipeline` `service` `cli` `library` `ui` `unknown` | `templates/` |
 
 Read only the skeleton you picked.
 
 ---
 
-## Step C — Depth (how much structure)
+## Step C — Depth
 
-**Governing test:** choose the thinnest depth that can express every decision
-the system cannot safely leave implicit.
+**Governing test:** the thinnest depth that can express every decision the
+system cannot safely leave implicit. No fourth depth. No complexity score.
 
-If a decision would otherwise be made silently in code — a boundary, a secret,
-a forbidden import, an irreversible action — escalate until that decision has
-a home in an artifact. That is the test. "When in doubt, go thinner" is not.
-
-Do not add a fourth depth. If `standard` is too broad later, add a *conditional
-requirement* to an existing depth before inventing `full-lite`.
-
-| Depth | Must reach `complete` | May stay `stub` / `partial` |
+| Depth | Must be `complete` | May stay `stub` / `partial` |
 |---|---|---|
-| **thin** | Architecture, Flows, Contracts, DecisionLog, README | Types, Schemas, Interfaces, Dependencies, Modules |
+| **thin** | Architecture, Flows, Contracts, DecisionLog, README | Types, Schemas, Interfaces, Modules, Dependencies |
 | **standard** | thin + Types + Interfaces + Modules | Schemas, Dependencies |
 | **full** | all ten | none |
 
-Escalate when any of these become true — these are structural consequences,
-not size:
+Escalate when: extra process or network boundary; secrets / money / private
+data / irreversible action; modules that must not import each other; this
+design will be reused as a skeleton.
 
-- more than one process or more than one network boundary
-- secrets, money, private data, or irreversible actions
-- two modules that must not import each other
-- you intend this design to be copied as a skeleton
+States: structurally valid → depth-complete → fully complete (`SCHEMA.md`).
 
-All ten files still exist from minute zero (**structurally valid**).
-A build is done at **depth-complete**. A reusable skeleton is **fully complete**.
-See `SCHEMA.md`.
-
-Record the choice in the Intent Card's decision block so a later entity does
-not have to re-derive it.
+Record class, depth, reasons, escalate_if on the Intent Card.
 
 ---
 
-## Step D — Minimum context
+## Step D — Load list (authoritative)
 
-This is a property of the framework, not etiquette.
-
-Load only the artifacts, skeletons, and instructions required by the selected
-class and depth. Unselected material is not assumed relevant.
-
-Read, in this order, and stop:
+Load only what the selected class and depth require. Unselected material is
+not relevant.
 
 1. This file
-2. The Intent Card
-3. `PIPELINE.md` non-negotiables
-4. `QUALITY-BAR.md` — always. Thin is not permission to be vague.
-5. Only the skeleton or templates you selected
+2. Intent Card
+3. `PIPELINE.md` non-negotiables + fill order
+4. `QUALITY-BAR.md`
+5. The one selected skeleton or `templates/`
 6. `GENERATOR.md` from Step 1 onward
+
+Stop.
 
 ---
 
 ## Step E — Hand off
 
-Tell the human: class, depth, the structural reasons, assumptions, what "done"
-means at this depth. Then build.
+Class, depth, reasons, stack if you chose one, assumptions, what done means.
+Then build.
