@@ -1,7 +1,7 @@
 ---
 artifact: Dependencies
 status: complete
-order: 8
+order: 9
 fills: "allowed/forbidden dependency directions, hierarchy, import rules"
 depends_on: [Modules, Interfaces]
 filled_by: both
