@@ -33,7 +33,8 @@ Record the number once. If derived, name the source and how to re-derive. A vali
 A dashboard number must not become a control signal.
 
 ## 7. DecisionLog records why, titled as the question
-Append-only. Supersede, never rewrite.
+Append-only. Supersede, never rewrite. Continuous and selective — scope in `SCHEMA.md`.
+A log of every edit is a failed log.
 
 ## 8. Docs match reality in the same change
 A drifted artifact lies with authority.

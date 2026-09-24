@@ -41,8 +41,25 @@ that same depth also requires `complete`. Otherwise the depth cannot finish.
 ### Construction vs capture
 
 Sequential artifacts have an order. **DecisionLog does not.** Construction is
-sequential; decision capture is continuous. Writing DecisionLog only at the end
-is a failure.
+sequential. Capture is **continuous and selective**.
+
+You may decide freely. You may not hide a consequential decision.
+You do not write an entry for every change.
+
+**Record** a decision that alters architecture, class or depth, system
+boundaries, contracts, authority, security or privacy posture, a significant
+dependency, persistence or state semantics, an external interface, irreversible
+behavior, or the construction path (including a stack the human did not name).
+
+**Do not record** ordinary implementation, bug fixes, refactors, formatting,
+naming, or other locally reversible work — unless that work changes a
+consequential decision.
+
+Git records what changed. DecisionLog records why the architecture became what
+it is. There is no eleventh artifact for the rest.
+
+Writing DecisionLog only at the end is a failure. Writing it for every edit is
+also a failure.
 
 ---
 
@@ -50,7 +67,7 @@ is a failure.
 
 Sequential: Architecture → Flows → Contracts → Types → Schemas → Interfaces → Modules → Dependencies → README.
 
-Continuous: DecisionLog.
+Continuous and selective: DecisionLog.
 
 ---
 

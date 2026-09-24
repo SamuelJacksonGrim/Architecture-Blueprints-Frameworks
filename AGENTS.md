@@ -20,9 +20,9 @@ same as pre-approved.
 1. Follow [`SELECTOR.md`](SELECTOR.md) — class, depth, Intent Card, load list.
    You choose depth. Three questions max.
 2. Instantiate all ten stubs + `INTENT.md`.
-3. Fill in [`PIPELINE.md`](PIPELINE.md) order. Record decisions *as you make them*
-   in DecisionLog. Do not wait for its slot. Construction is sequential; capture
-   is continuous.
+3. Fill in [`PIPELINE.md`](PIPELINE.md) order. Record *consequential* decisions
+   as you make them. Do not wait for DecisionLog's slot. Do not log every edit.
+   Scope is [`SCHEMA.md`](SCHEMA.md).
 4. Consult [`QUALITY-BAR.md`](QUALITY-BAR.md) when marking an artifact `complete`
    and at self-audit — not as a second constitution up front.
 5. Stack the human did not name: smallest that can smoke-test, log, show.
@@ -39,3 +39,4 @@ same as pre-approved.
 - Treat [`OPERATOR.md`](OPERATOR.md) as required.
 - Skip this file because a vendor stub (`CLAUDE.md`, `GEMINI.md`, Copilot
   instructions) exists. Those files only point here.
+- Turn DecisionLog into a change journal. Git already exists.

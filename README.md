@@ -49,7 +49,7 @@ Reference (not a reading list): [`GENERATOR.md`](GENERATOR.md) · [`SCHEMA.md`](
 
 `Architecture · Flows · Contracts · Types · Schemas · Interfaces · Modules · Dependencies · DecisionLog · README`
 
-Fill order: Architecture → Flows → Contracts → Types → Schemas → Interfaces → Modules → Dependencies → README. DecisionLog is continuous.
+Fill order: Architecture → Flows → Contracts → Types → Schemas → Interfaces → Modules → Dependencies → README. DecisionLog is continuous and selective — why the architecture changed, not every edit (`SCHEMA.md`).
 
 ---
 

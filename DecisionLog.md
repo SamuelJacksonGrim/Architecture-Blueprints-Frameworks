@@ -10,18 +10,18 @@
 ### D-006 — Authority is not authorship
 ### D-007 — Planned catalog is forged, not sketched
 ### D-008 — One agent brief, many loaders
+### D-009 — Cognitive-cycle is a class, not a difficulty setting
 
 ---
 
-### D-009 — Cognitive-cycle is a class, not a difficulty setting
+### D-010 — Continuous does not mean exhaustive
 
-**Question:** How do we stop an entity from treating the forever-loop as the
-default for any serious task, or from stitching evaluator/diagnostic into it?
+**Question:** Does every change get a DecisionLog entry?
 
-**Chosen:** A "when not to load this" section on the skeleton README. One sentence
-in SELECTOR Step B: this class is a persistent self. Siblings stay siblings.
+**Chosen:** Capture is continuous *and selective*. Scope lives in SCHEMA.
+Git = what changed. DecisionLog = why the architecture became what it is.
+No eleventh artifact.
 
-**Rejected:** Importing evaluator + diagnostic into the cycle. A scoring rubric
-for when to pick the class.
+**Rejected:** An activity journal. A ChangeLog / ReasoningLog / ThoughtLog.
 
 **Date:** 2026-09-24
