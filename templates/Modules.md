@@ -1,7 +1,7 @@
 ---
 artifact: Modules
 status: stub
-order: 9
+order: 8
 fills: "module list, ownership, responsibilities, boundaries"
 depends_on: [Interfaces]
 filled_by: both
