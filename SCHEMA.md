@@ -1,20 +1,18 @@
 # 🧬 SCHEMA — The 10-Artifact Architecture Ontology
 
-> Single source of truth for what a skeleton *is*. Fill *order* is `PIPELINE.md`.
-> How much to speak is `SELECTOR.md`.
+Fill *order* is `PIPELINE.md`. How much to speak is `SELECTOR.md`.
 
-Architecture is information, not code. The ten names are closed. The amount of
-language a build must speak is not.
+The ten names are closed. How much of the language a build must speak is not.
 
 ---
 
-## The Frontmatter Contract
+## Frontmatter
 
 ```yaml
 ---
 artifact: Architecture
 status: stub                  # stub | partial | complete
-order: 1
+order: 1                      # sequential artifacts only; DecisionLog is 99
 fills: "structural blueprint"
 depends_on: []
 filled_by: both
@@ -22,51 +20,38 @@ last_decision: null
 ---
 ```
 
-### Dependency rule (`depends_on`)
+### Dependency rule
 
-Stated once, here.
+- A dependency must be `partial` or `complete` before dependent work may begin.
+- A dependent artifact may not become `complete` while a required dependency remains `stub`.
 
-- A dependency must be **`partial` or `complete`** before dependent work may begin.
-- A dependent artifact may **not** become `complete` while a required dependency remains `stub`.
-- `partial` is enough to *start*. `complete` is required before the next artifact may itself be marked `complete`.
+### Depth self-consistency
 
-### Three completeness states
+An artifact required `complete` at a given depth may only `depends_on` artifacts
+that same depth also requires `complete`. Otherwise the depth cannot finish.
+
+### Three states
 
 | State | Meaning |
 |---|---|
-| **structurally valid** | All ten files exist, valid frontmatter. |
-| **depth-complete** | Every artifact the selected depth requires is `complete`. A *build* is done. |
-| **fully complete** | All ten are `complete`. Required of a reusable skeleton. |
+| **structurally valid** | All ten files exist. |
+| **depth-complete** | Every artifact this depth requires is `complete`. A build is done. |
+| **fully complete** | All ten `complete`. Reusable skeleton. |
 
-### Invalid
+### Construction vs capture
 
-Missing file. Bad frontmatter. Invented artifact name. `complete` while a `depends_on` target is still `stub`. Silent decision (including a hidden stack).
-
----
-
-## The 10 Artifacts (fill order)
-
-1. Architecture — city map
-2. Flows — the movie
-3. Contracts — constitution (after Flows; D-001)
-4. Types — vocabulary
-5. Schemas — ontology
-6. Interfaces — plug points
-7. Modules — named pieces that implement those plugs
-8. Dependencies — allowed/forbidden edges between those modules (after Modules; D-005)
-9. DecisionLog — memory, continuous
-10. README — front door
-
-```
-Architecture → Flows → Contracts → Types + Schemas
-         → Interfaces → Modules → Dependencies
-DecisionLog runs through all of it.
-```
-
-The ten *names* did not change. Only the fill order of Modules vs Dependencies.
+Sequential artifacts have an order. **DecisionLog does not.** Construction is
+sequential; decision capture is continuous. Writing DecisionLog only at the end
+is a failure.
 
 ---
 
-## Cross-Skeleton Compatibility
+## The 10 artifacts
 
-Same ten names, same meanings. Shared language. Not a requirement to recite all of it.
+Sequential: Architecture → Flows → Contracts → Types → Schemas → Interfaces → Modules → Dependencies → README.
+
+Continuous: DecisionLog.
+
+---
+
+Same names across skeletons. Shared language. Not a requirement to recite all of it.
