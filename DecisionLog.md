@@ -8,18 +8,19 @@
 ### D-004 — Class ≠ depth; implicit-decision test
 ### D-005 — Interfaces → Modules → Dependencies; stacks visible
 ### D-006 — Authority is not authorship
+### D-007 — Planned catalog is forged, not sketched
 
 ---
 
-### D-007 — Planned catalog is forged, not sketched
+### D-008 — One agent brief, many loaders
 
-**Question:** Leave Tool Ecosystem / Event Bus / Evaluator / Diagnostic as planned rows?
+**Question:** How does every common model find AGENTS.md first?
 
-**Chosen:** Four full-depth skeletons. Each reusable. No running code in this
-repo — these are the language, not implementations. Smoke-test of *this* change
-is structural: all ten artifacts present and internally consistent.
+**Chosen:** README opens with an AI/human split. Vendor stubs are pointers only:
+`CLAUDE.md` imports `@AGENTS.md`. `GEMINI.md`, `.github/copilot-instructions.md`,
+and `.cursor/rules/front-door.mdc` send the reader to `AGENTS.md`. No second brief.
 
-**Rejected:** shipping `.keep` folders and calling them complete. Adding a fifth
-depth so the catalog could stay "planned."
+**Rejected:** Duplicating AGENTS.md into every vendor file. Listing SCHEMA /
+PIPELINE / QUALITY-BAR as peer start-here items for the AI.
 
 **Date:** 2026-09-24

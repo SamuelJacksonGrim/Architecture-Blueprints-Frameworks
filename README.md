@@ -3,6 +3,11 @@
 [![License: AGPL-3.0-only](https://img.shields.io/badge/license-AGPL--3.0--only-blue)](LICENSE)
 [![dual-license](https://img.shields.io/badge/dual--license-AGPL--3.0--only%20or%20commercial-blueviolet)](LICENSING.md)
 
+> **If you are an AI:** stop. Read [`AGENTS.md`](AGENTS.md) next. Then follow
+> [`SELECTOR.md`](SELECTOR.md). Do not invent a reading order.
+>
+> **If you are a human:** [`QUICKSTART.md`](QUICKSTART.md).
+
 ## License
 
 Dual-licensed: [AGPL-3.0-only](LICENSE) or [commercial](COMMERCIAL-LICENSE.md).
@@ -29,17 +34,14 @@ right to accept, reject, or redirect. You do not have to invent the design.
 
 ## Start here
 
-| File | What it is |
-|------|------------|
-| [`QUICKSTART.md`](QUICKSTART.md) | Three steps. |
-| [`AGENTS.md`](AGENTS.md) | What the AI reads. |
-| [`SELECTOR.md`](SELECTOR.md) | Class, depth, load list. |
-| [`OPERATOR.md`](OPERATOR.md) | Optional multi-model seams. |
-| [`GENERATOR.md`](GENERATOR.md) | After SELECTOR: instantiate, fill, code, test. |
-| [`SCHEMA.md`](SCHEMA.md) | The ten artifacts. |
-| [`PIPELINE.md`](PIPELINE.md) | Fill order. |
-| [`DecisionLog.md`](DecisionLog.md) | Why this repo made its calls. |
-| [`QUALITY-BAR.md`](QUALITY-BAR.md) | Rubric when calling something complete. |
+| Who | File |
+|-----|------|
+| Entity | [`AGENTS.md`](AGENTS.md) — first file after this README |
+| Human | [`QUICKSTART.md`](QUICKSTART.md) |
+
+Load order after that lives only in [`SELECTOR.md`](SELECTOR.md).
+
+Reference (not a reading list): [`GENERATOR.md`](GENERATOR.md) · [`SCHEMA.md`](SCHEMA.md) · [`PIPELINE.md`](PIPELINE.md) · [`QUALITY-BAR.md`](QUALITY-BAR.md) · [`OPERATOR.md`](OPERATOR.md) · [`DecisionLog.md`](DecisionLog.md)
 
 ---
 
