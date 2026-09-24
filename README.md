@@ -25,9 +25,6 @@ right to accept, reject, or redirect. You do not have to invent the design.
 | **The AI** | Reasoning, architecture, implementation, verification status. | Hide a decision. Wait for your blueprint. |
 | **This repo** | Vocabulary, fill order, depth, inspectability. | A stack, a committee, a score. |
 
-Useful surprise is allowed. "Is this what I meant?" is authority, not a demand
-that the AI reproduced a design you already had in your head.
-
 ---
 
 ## Start here
@@ -50,29 +47,20 @@ that the AI reproduced a design you already had in your head.
 
 `Architecture · Flows · Contracts · Types · Schemas · Interfaces · Modules · Dependencies · DecisionLog · README`
 
-Not every system speaks every sentence. SELECTOR picks how much.
-
 Fill order: Architecture → Flows → Contracts → Types → Schemas → Interfaces → Modules → Dependencies → README. DecisionLog is continuous.
-
----
-
-## How to use it
-
-1. Say what you want.
-2. Point an AI at this repo.
-3. Read what it built and whether it ran. Keep or send it back.
-
-The AI chooses class and depth. You may override. You should not have to name them first.
 
 ---
 
 ## Skeletons
 
-| Skeleton | Status |
-|----------|--------|
-| [Agents](skeletons/agents/) | complete |
-| [Autonomous Cognitive Loop](skeletons/cognitive-cycle/) | complete |
-| Tool Ecosystem / Event Bus / Evaluator / Diagnostic | planned |
+| Skeleton | Status | Load when |
+|----------|--------|-----------|
+| [Agents](skeletons/agents/) | complete | `agent-loop` |
+| [Autonomous Cognitive Loop](skeletons/cognitive-cycle/) | complete | `cognitive-cycle` |
+| [Tool Ecosystem](skeletons/tool-ecosystem/) | complete | named tools / dispatch |
+| [Event Bus](skeletons/event-bus/) | complete | pub/sub |
+| [Evaluator](skeletons/evaluator/) | complete | score + critique |
+| [Diagnostic](skeletons/diagnostic/) | complete | observe → hypothesize → test → report |
 
 ---
 
