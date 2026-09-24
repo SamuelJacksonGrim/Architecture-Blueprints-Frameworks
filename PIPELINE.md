@@ -1,77 +1,44 @@
-# ⚙️ PIPELINE — The Architecture Generation Build Order
+# ⚙️ PIPELINE — fill order
 
-> Walk this sequence. Loading order (what to read first) lives only in
-> [`SELECTOR.md`](SELECTOR.md) Step D. This file is fill order, not load order.
+Load order lives only in [`SELECTOR.md`](SELECTOR.md) Step D.
 
----
-
-## 🚫 NON-NEGOTIABLE RULES
-
-0. **Read `SELECTOR.md` first** — including its load list. Class and depth are
-   independent. Fill the Intent Card. (`DecisionLog` D-002, D-004, D-005.)
-1. **Instantiate all 10 stubs + `INTENT.md`.** Structurally valid (`SCHEMA.md`).
-2. **Fill in the order below. Never reorder.** Stop when depth is satisfied.
-   Dependency meaning is only in `SCHEMA.md`.
-3. **Log non-obvious decisions**, including any stack the human did not name.
-4. **No code you cannot trace** to a note this depth required.
-5. **Self-audit before "done."** Depth-allowed stubs do not fail the build.
+**Construction is sequential. Decision capture is continuous.** DecisionLog is
+not a late pipeline step. Write it the moment you decide. Do not wait for a slot.
 
 ---
 
-## The Build Order
+## Rules
+
+0. SELECTOR first. You choose class and depth. Human may override later.
+1. Instantiate all 10 stubs + `INTENT.md`.
+2. Fill sequential artifacts in the order below. Never reorder. Stop at depth.
+3. Log consequential decisions as they happen — including a stack you chose.
+4. Behaviorally significant decisions and non-trivial behavior must be traceable
+   to a note this depth required. Ordinary glue does not.
+5. Self-audit. Attempt a smoke test. State whether it ran.
+
+`depends_on` meaning is only in `SCHEMA.md`.
+
+---
+
+## Sequential fill order
 
 ```
-0. Select                    ← class + depth + Intent Card
-        ↓
-1. Instantiate               ← structurally valid
-        ↓
-2. Architecture
-        ↓
-3. Flows
-        ↓
-4. Contracts
-        ↓
-5. Types
-        ↓
-6. Schemas
-        ↓
-7. Interfaces                ← plug points
-        ↓
-8. Modules                   ← named pieces that implement those plugs
-        ↓
-9. Dependencies              ← allowed/forbidden edges *between those modules*
-        ↓
-10. README
+Architecture → Flows → Contracts → Types → Schemas
+         → Interfaces → Modules → Dependencies → README
 
-   DecisionLog ── continuous ──
+DecisionLog ── continuous, from the first choice ──
 ```
 
-You cannot forbid an import between modules you have not named. That is D-005.
+README at `thin` depth depends only on Architecture, Flows, Contracts.
 
 ---
 
-## Status progression
+## Self-audit
 
-Defined in `SCHEMA.md`: structurally valid → depth-complete → fully complete.
-
----
-
-## Practical loop
-
-1. Lowest-`order` artifact this depth still requires, whose `depends_on` targets
-   are at least `partial`.
-2. Mark it `complete` only when those targets are themselves `complete`.
-3. Log choices, including implementation stack if you had to pick one.
-4. Stop at depth-complete.
-
----
-
-## Step 10 — Self-audit
-
-- [ ] Intent Card: class, depth, structural reasons.
+- [ ] Intent Card: class, depth, reasons (your judgment).
 - [ ] Structurally valid.
-- [ ] Depth-complete.
-- [ ] Remaining artifacts honestly `stub`/`partial`.
-- [ ] No `complete` artifact while a required `depends_on` is `stub`.
-- [ ] Any chosen stack is in DecisionLog and was shown to the human.
-- [ ] Smoke test passed, or inability to run is stated plainly.
+- [ ] Depth-complete. No required artifact still blocked by a stub it depends on.
+- [ ] DecisionLog has entries written *during* the work, not after.
+- [ ] Chosen stack, if any, is logged and was shown.
+- [ ] Smoke test ran, or inability to run is stated. No implied success.
