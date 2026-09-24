@@ -2,7 +2,7 @@
 artifact: DecisionLog
 status: stub
 order: 99
-fills: "architectural memory — decisions, alternatives, reasons, dates"
+fills: "architectural memory — consequential decisions, not every change"
 depends_on: []
 filled_by: both
 last_decision: null
@@ -10,16 +10,13 @@ last_decision: null
 
 # DecisionLog — *the architectural memory*
 
-> A plain record of the choices that shaped the build, so nobody re-litigates
-> them later. Maintained as you go, not in one pass. Reference entries by id
-> (e.g. `D-002`) from an artifact's `last_decision` field.
+> Why the architecture became what it is. Git records what changed.
+> Scope is [`SCHEMA.md`](../SCHEMA.md): continuous and selective.
 
-## A couple of habits that keep it useful
-- **Append-only. Supersede, never rewrite.** If a later choice overturns an
-  earlier one, add a new entry and mark the old one's `Status`. The change of
-  mind is part of the record.
-- **Title the question, not the verdict.** "Auth: sessions vs tokens?" still
-  makes sense after a reversal; "Use tokens" becomes a lie the moment you switch.
+## Habits
+- **Append-only. Supersede, never rewrite.**
+- **Title the question, not the verdict.**
+- **Skip ordinary work.** A rename, a null check, a typo, a local refactor — no entry.
 
 ## Status values
 `active` · `superseded by D-NNN` · `reversed by D-NNN`
