@@ -1,45 +1,38 @@
 # ⚡ QUICKSTART
 
-**You don't need to know how to code.** Here's the entire workflow.
+**You don't need to know how to code.**
 
 ---
 
 ## 1. Say what you want
 
-Describe your idea in plain English. Be as vague or specific as you like:
+Plain English. Vague is fine:
 
 > *"Build me an app that tracks when I last watered each of my houseplants and
 > reminds me when they're due."*
 
-## 2. Point your AI at this repo and ask — in plain words
+You are not asked to design it. You are asked what you want.
 
-Open the repo with whatever AI you use and just tell it what you want:
+## 2. Point an AI at this repo
 
 > *"Build the plant-watering app using this repo."*
 
-That's it. No special prompt to paste. The repo tells the AI how to build it
-right ([`AGENTS.md`](AGENTS.md) is the instruction file it reads automatically);
-your only job is to say what you want.
+No special prompt. [`AGENTS.md`](AGENTS.md) is what it reads.
 
-Optional, if you already know it: add four lines — *Want / Must not / Runs where
-/ Done when.* If you skip them, the AI fills an Intent Card from what you said
-and shows it once.
+Optional four lines if you already know them: Want / Must not / Runs where /
+Done when. If you skip them, the AI fills an Intent Card from what you said
+and shows it once — including the architecture *it* chose.
 
 ## 3. Look at what it shows you
 
-The AI hands back a working project **and** a plain-English summary. You judge
-*one thing*: is this what you meant? If not, say what's off — it iterates. You
-never read the design notes unless you're curious.
+You get a project, a plain-English summary, and an honest note about whether
+the main path was actually run. You keep authority: accept, reject, or redirect.
+You do not have to have imagined the architecture it produced.
 
 ---
 
-## Why bother (the 30-second pitch)
+## Why bother
 
-Left alone, an AI "vibe-codes": it guesses an architecture, forgets pieces, and
-hands you something shaky you can't evaluate. This repo forces it to **design
-before it builds** — the same 10 building blocks every time, in a fixed order,
-only as deep as the thing actually needs (`thin` / `standard` / `full`). Every
-decision is recorded, so the result is precise instead of improvised.
-
-Curious what those building blocks are? The README's **"Learn the 10 building
-blocks"** section explains all of them in plain language.
+Left alone, an AI vibe-codes. This repo gives it a language and an evidence
+standard so the design is inspectable and only as deep as the thing needs.
+The AI still has to think. You still get to say no.
