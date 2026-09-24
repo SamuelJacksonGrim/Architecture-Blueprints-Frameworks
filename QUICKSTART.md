@@ -21,6 +21,10 @@ That's it. No special prompt to paste. The repo tells the AI how to build it
 right ([`AGENTS.md`](AGENTS.md) is the instruction file it reads automatically);
 your only job is to say what you want.
 
+Optional, if you already know it: add four lines — *Want / Must not / Runs where
+/ Done when.* If you skip them, the AI fills an Intent Card from what you said
+and shows it once.
+
 ## 3. Look at what it shows you
 
 The AI hands back a working project **and** a plain-English summary. You judge
@@ -33,8 +37,9 @@ never read the design notes unless you're curious.
 
 Left alone, an AI "vibe-codes": it guesses an architecture, forgets pieces, and
 hands you something shaky you can't evaluate. This repo forces it to **design
-before it builds** — 10 standard building blocks, in a fixed order, every
-decision recorded — so the result is precise and consistent instead of improvised.
+before it builds** — the same 10 building blocks every time, in a fixed order,
+only as deep as the thing actually needs (`thin` / `standard` / `full`). Every
+decision is recorded, so the result is precise instead of improvised.
 
 Curious what those building blocks are? The README's **"Learn the 10 building
 blocks"** section explains all of them in plain language.

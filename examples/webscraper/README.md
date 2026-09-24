@@ -14,9 +14,10 @@
 2. **The source tree** — [`ProjectStructure.md`](ProjectStructure.md) plus a
    [`src/`](src/) layout, one folder per module.
 
-> This example stops at the design + structure layers to keep it readable. In a
-> live build the AI then **writes the actual code** into each `src/` folder
-> (Step 4 of [`../../GENERATOR.md`](../../GENERATOR.md)) — the human never touches it.
+> This example is **design + folder scaffold only.** The `src/` directories
+> contain `.keep` placeholders, not running code. Do not copy it as proof that
+> a build "works." In a live build the AI writes real code into those folders
+> (GENERATOR Step 4) and smoke-tests the main path — or says it could not.
 
 ## Suggested reading order
 1. [`architecture/README.md`](architecture/README.md) — what & why
