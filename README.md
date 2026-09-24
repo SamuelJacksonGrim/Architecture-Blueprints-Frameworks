@@ -39,9 +39,8 @@ a real, correctly-structured project instead of a pile of guesses.
   code from bad.
 - **This repo is that structure.** It's a checklist the AI fills out *for
   itself* before and while it builds — what the pieces are, how they connect,
-  what must stay true. Those notes (Types, Flows, Contracts…) aren't for you;
-  they're how the AI makes sure it builds the *right* thing the *right* way,
-  every time.
+  what must stay true. Those notes aren't for you; they're how the AI stays
+  honest. It only fills them as deep as the thing actually needs.
 
 So: **you → idea. AI → reads this roadmap → designs it, then writes all the
 code. Repo → guarantees it's built with precision instead of vibe-coded.**
@@ -52,9 +51,7 @@ code. Repo → guarantees it's built with precision instead of vibe-coded.**
 > and, when it shows you the result, tell it whether that's the thing you meant.
 
 > 💡 **One habit that changes everything:** ask the AI *what it would change.*
-> Inviting it into the design — "what's the risk here?", "what would you
-> restructure?" — is where the best results come from. See
-> [`COLLABORATION.md`](COLLABORATION.md). (This repo was built that way.)
+> See [`COLLABORATION.md`](COLLABORATION.md).
 
 ---
 
@@ -63,154 +60,77 @@ code. Repo → guarantees it's built with precision instead of vibe-coded.**
 | File | What it is |
 |------|------------|
 | **[`QUICKSTART.md`](QUICKSTART.md)** | 🟢 **New here? Start here.** The whole workflow in plain terms. |
-| **[`AGENTS.md`](AGENTS.md)** | What an AI reads automatically when pointed at this repo — so no prompt is needed. |
+| **[`AGENTS.md`](AGENTS.md)** | What an AI reads automatically when pointed at this repo. |
+| **[`SELECTOR.md`](SELECTOR.md)** | Classify the idea, pick a depth, load only what you need. |
+| **[`OPERATOR.md`](OPERATOR.md)** | Optional: how to split work across more than one model. Not required. |
 | **[`GENERATOR.md`](GENERATOR.md)** | The procedure an AI follows: idea → design → code. |
-| **[`SCHEMA.md`](SCHEMA.md)** | The single source of truth: the 10 artifacts + the frontmatter contract. |
-| **[`PIPELINE.md`](PIPELINE.md)** | The deterministic build order + the **Non-Negotiable Rules**. |
-| **[`QUALITY-BAR.md`](QUALITY-BAR.md)** | The rigor "complete" must reach — so it means *good*, not just *present*. |
-| **[`templates/`](templates/)** | Copy-ready stubs — one per artifact, all frontmatter in place. |
-| **[`skeletons/`](skeletons/)** | Reusable patterns — see [`skeletons/agents/`](skeletons/agents/). |
-| **[`examples/`](examples/)** | Full generated builds for concrete ideas — see [`examples/webscraper/`](examples/webscraper/). |
-| **[`CONTRIBUTING.md`](CONTRIBUTING.md)** | How to add a skeleton/variant/example without breaking consistency. |
-| **[`COLLABORATION.md`](COLLABORATION.md)** | Why to invite the AI into the design space — co-creation as a first-class principle. |
+| **[`SCHEMA.md`](SCHEMA.md)** | The 10 artifacts + the frontmatter contract. |
+| **[`PIPELINE.md`](PIPELINE.md)** | Build order + non-negotiable rules. |
+| **[`DecisionLog.md`](DecisionLog.md)** | Why this repo itself made the calls it made. |
+| **[`QUALITY-BAR.md`](QUALITY-BAR.md)** | The rigor "complete" must reach. |
+| **[`templates/`](templates/)** | Copy-ready stubs, including the Intent Card. |
+| **[`skeletons/`](skeletons/)** | Reusable patterns. |
+| **[`examples/`](examples/)** | Worked schematics — design-only unless the folder says otherwise. |
+| **[`CONTRIBUTING.md`](CONTRIBUTING.md)** | How to add a skeleton without breaking consistency. |
+| **[`COLLABORATION.md`](COLLABORATION.md)** | Invite the AI into the design space. |
 
 ---
 
 ## 🧱 The idea in one breath
 
-Every architecture — a tool ecosystem, an agent, an event bus, a cognitive
-cycle — is described by the **same 10 artifacts**:
+Every architecture is described by the **same 10 artifacts**:
 
 `Architecture · Flows · Contracts · Types · Schemas · Interfaces · Dependencies · Modules · DecisionLog · README`
 
-Because every system speaks this same language, they become **comparable and
-composable** — a `Contracts.md` from an agent can be read against a
-`Contracts.md` from an event bus.
+Because every system speaks this same language, they become comparable and
+composable.
+
+Not every system needs every sentence of that language spoken out loud.
+[`SELECTOR.md`](SELECTOR.md) picks a depth so a CLI does not receive a
+constitution meant for a multi-service agent.
 
 ---
 
 ## 📚 Learn the 10 building blocks (teaching section)
 
-> **This repo is also a teaching tool.** You don't *need* to know any of this to
-> use it — but if you're curious what the AI is actually thinking about when it
-> builds your idea, here's every piece in plain language. (The precise,
-> machine-facing versions live in [`SCHEMA.md`](SCHEMA.md).)
->
-> Every piece of software, no matter what it does, can be described by these ten
-> things. Think of building software like building a house:
+> You don't *need* to know any of this to use the repo. Precise definitions live
+> in [`SCHEMA.md`](SCHEMA.md).
 
 | # | Artifact | Metaphor | The question it answers |
 |---|----------|----------|--------------------------|
 | 1 | **Architecture** | the city map | What are the big pieces, and how are they laid out? |
 | 2 | **Flows** | the movie | What actually *happens*, step by step, when it runs? |
 | 3 | **Contracts** | the constitution | What must *always* be true? What's promised? |
-| 4 | **Types** | the vocabulary | What are the "things" the system talks about? (a User, a Price…) |
+| 4 | **Types** | the vocabulary | What are the "things" the system talks about? |
 | 5 | **Schemas** | the conceptual map | How do those things relate and change? |
 | 6 | **Interfaces** | the plug sockets | How do the pieces connect so one can be swapped out? |
-| 7 | **Dependencies** | the wiring rules | What's allowed to rely on what? (so it doesn't tangle) |
+| 7 | **Dependencies** | the wiring rules | What's allowed to rely on what? |
 | 8 | **Modules** | the org chart | What are the pieces, and who's responsible for what? |
-| 9 | **DecisionLog** | the diary | What choices were made, and *why*? (so nobody re-argues them) |
+| 9 | **DecisionLog** | the diary | What choices were made, and *why*? |
 | 10 | **README** | the front door | What is this, and why does it exist? |
 
-### How they stack (each layer rests on the one above)
-
-```
-          ┌──────────────────────┐
-          │  1  Architecture     │   the structure
-          └──────────┬───────────┘
-                     ↓
-          ┌──────────────────────┐
-          │  2  Flows            │   the behavior
-          └──────────┬───────────┘
-                     ↓
-          ┌──────────────────────┐
-          │  3  Contracts        │   the guarantees
-          └──────────┬───────────┘
-                     ↓
-          ┌──────────────────────┐
-          │  4 Types · 5 Schemas │   the vocabulary
-          └──────────┬───────────┘
-                     ↓
-          ┌──────────────────────┐
-          │ 6 Interfaces ·       │   the wiring &
-          │ 7 Deps · 8 Modules   │   decomposition
-          └──────────────────────┘
-
-   9 DecisionLog runs through all of it — it records *why*.
-   10 README is the front door visitors read first.
-```
-
-> **Why this order matters:** you can't promise what a thing does (Contracts)
-> until you've described what it does (Flows); you can't describe that until you
-> know its big pieces (Architecture). The AI builds top-to-bottom for exactly
-> that reason — see [`PIPELINE.md`](PIPELINE.md).
-
-### The journey: from your words to working software
-
-```
-   YOU                    THE AI (following this repo)                RESULT
-  ─────                   ────────────────────────────               ────────
- "build me   ─────▶   1. pick a starting pattern                 
-  a thing                2. fill the 10 building blocks  ───────▶   a real,
-  that does                 (the design above), in order            working,
-  X"                     3. lay out the folders/files              correctly-
-                         4. write the code to match the design ─▶  built
- (plain words)           5. show you what it does, plainly         project
-       ▲                                                              │
-       └──────────  "that's it" / "not quite, I meant…"  ◀───────────┘
-```
-
-You stay on the left and the right. Everything in the middle is the AI's job —
-and this repo is what makes the middle come out *right* every time.
-
----
-
-## 🗂️ Repository structure
-
-```
-.
-├── README.md            ← you are here (the pitch + map)
-├── GENERATOR.md         ← the procedure: your idea → finished build
-├── SCHEMA.md            ← canonical 10-artifact definitions + frontmatter contract
-├── PIPELINE.md          ← deterministic build order
-│
-├── templates/           ← copy-ready stubs (one per artifact)
-│   ├── Architecture.md  Flows.md  Contracts.md  Types.md  Schemas.md
-│   ├── Interfaces.md  Dependencies.md  Modules.md  DecisionLog.md  README.md
-│   └── diagrams/        ← architecture_graph · system_flow · execution_map
-│
-├── skeletons/           ← reusable patterns
-│   └── agents/          ← ✅ ReAct · Plan-Execute · Reflexion · Tree-of-Thoughts · Guarded
-│
-└── examples/            ← full generated builds for concrete ideas
-    └── webscraper/      ← ✅ the whole procedure run on one plain-English request
-```
+The AI fills these **top to bottom**, only as far as the chosen depth requires.
+See [`PIPELINE.md`](PIPELINE.md) and [`SELECTOR.md`](SELECTOR.md).
 
 ---
 
 ## 🚀 How to use this repo
 
-**Your whole job (no coding, no jargon):**
-1. **Say what you want**, in plain words: *"build me an app that tracks my
-   plants' watering schedules."*
-2. **Point an AI at this repo** and ask it to build that.
-3. **Look at what it shows you** and say whether it's the thing you meant. Done.
+**Your whole job:**
+1. Say what you want, in plain words.
+2. Point an AI at this repo and ask it to build that.
+3. Look at what it shows you. Say whether it's the thing you meant.
 
-**What the AI does (the actual building):**
-1. **Picks a starting point** — a pattern from `skeletons/`, or the blank
-   `templates/` for anything new.
-2. **Instantiates it** — all 10 design notes exist as stubs from the start.
-   *Nothing is optional at the structural level* (the Instantiation Rule).
-3. **Walks the pipeline** in [`PIPELINE.md`](PIPELINE.md): Architecture → Flows →
-   Contracts → Types → Schemas → Interfaces → Dependencies → Modules → README,
-   recording its reasoning in `DecisionLog`.
-4. **Fills each note in order**, then **derives the folder/file tree and writes
-   the actual code** against it. Because every piece, connection, and rule was
-   pinned down first, the code comes out *precise* — not vibe-coded.
+Optional four lines if you already know them: Want / Must not / Runs where / Done when.
 
-The full step-by-step the AI follows is in **[`GENERATOR.md`](GENERATOR.md)**, and
-**[`examples/webscraper/`](examples/webscraper/)** shows the whole thing run once
-on a single plain-English request.
+**What the AI does:**
+1. Reads `SELECTOR.md` — class, depth, Intent Card.
+2. Instantiates all 10 stubs + `INTENT.md`.
+3. Fills only what that depth requires, in pipeline order, against `QUALITY-BAR.md`.
+4. Writes code it can trace to those notes, then smoke-tests — or says it could not.
+
+If you have more than one model and want to split the work, read [`OPERATOR.md`](OPERATOR.md).
+A single model is enough.
 
 ---
 
@@ -218,17 +138,12 @@ on a single plain-English request.
 
 | Skeleton | Status | Notes |
 |----------|--------|-------|
-| **[Agents](skeletons/agents/)** | ✅ complete | The four 2026 agent-loop patterns. **ReAct** fully worked; **Plan-Execute · Reflexion · Tree-of-Thoughts** as deltas on it. |
-| **[Autonomous Cognitive Loop](skeletons/cognitive-cycle/)** | ✅ complete | A continuous, self-governing loop: single-arbiter governance, terminal sinks, bounded state, earned preferences. |
-| Tool Ecosystem | 🔜 planned | Router · Registry · Executor; deterministic tool calls. |
-| Event Bus | 🔜 planned | Publish/subscribe, event routing, delivery guarantees. |
-| Evaluator Engine | 🔜 planned | Scoring/critique pipelines. |
-| Diagnostic System | 🔜 planned | Observe→hypothesize→test→report. |
-
-> New to agents? Start at [`skeletons/agents/`](skeletons/agents/) — it explains
-> what an "agent loop" even is, then shows all four patterns side by side.
-> That's the bar; we forge each new skeleton the same way: prove it once, end to
-> end, before generalizing.
+| **[Agents](skeletons/agents/)** | ✅ complete | ReAct baseline; Plan-Execute · Reflexion · Tree-of-Thoughts as deltas; Guarded overlay. |
+| **[Autonomous Cognitive Loop](skeletons/cognitive-cycle/)** | ✅ complete | Continuous self-governing loop. |
+| Tool Ecosystem | 🕛 planned | Router · Registry · Executor. |
+| Event Bus | 🕛 planned | Publish/subscribe. |
+| Evaluator Engine | 🕛 planned | Scoring/critique pipelines. |
+| Diagnostic System | 🕛 planned | Observe→hypothesize→test→report. |
 
 ---
 
@@ -237,9 +152,8 @@ on a single plain-English request.
 Architecture is not code. Architecture is **information**.
 
 This repo exists to standardize how architectures are described, make system
-design reusable, create a shared cognitive language between humans and
-intelligent entities, reduce the cost of starting new systems, and **preserve
-architectural intent over time** (that last one is what `DecisionLog` is for).
+design reusable, create a shared language between humans and models, reduce the
+cost of starting, and **preserve intent over time** (`DecisionLog`).
 
-This is a **meta-architecture** — a blueprint for blueprints — and a substrate
-for co-creation, not a pile of documentation about itself.
+This is a meta-architecture — a blueprint for blueprints — not a pile of
+process prompts and not an operating system for a coding harness.
