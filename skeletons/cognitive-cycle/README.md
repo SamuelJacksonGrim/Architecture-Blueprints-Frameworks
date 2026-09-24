@@ -5,7 +5,7 @@ order: 10
 fills: "front door — what/why/problem/components for the instantiated system"
 depends_on: [Architecture, Flows, Contracts, Modules]
 filled_by: both
-last_decision: null
+last_decision: D-009
 ---
 
 # Autonomous Cognitive Loop skeleton
@@ -14,6 +14,21 @@ last_decision: null
 > that runs continuously, protects its own identity through a single arbiter,
 > handles external sources safely, and grows preferences from experience.
 > Copy it, then fill the bracketed parts in for your system.
+
+## When not to load this
+
+This class is a *self* that acts on its own state, forever. Do not select it for:
+
+- a one-shot CLI, library, or function
+- a request/response agent (`skeletons/agents/`)
+- an atomic config or variable change
+
+Do not bolt [`evaluator`](../evaluator/) or [`diagnostic`](../diagnostic/) onto
+the loop to invent an adversarial engine. Those are sibling languages. Compose
+them at system level if you need a judge that cannot act. Reports still do not
+steer.
+
+Mis-selecting this class is a SELECTOR failure, not a defect in the loop.
 
 ## What is this?
 A blueprint for a system that runs a continuous loop and acts on **its own
