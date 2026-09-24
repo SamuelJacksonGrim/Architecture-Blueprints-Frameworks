@@ -33,7 +33,11 @@ Pick the class that owns the main loop. Read only that skeleton.
 |---|---|
 | `agent-loop` | `skeletons/agents/` (ReAct unless a named failure mode needs a variant) |
 | `cognitive-cycle` | `skeletons/cognitive-cycle/` |
-| `pipeline` `service` `cli` `library` `ui` `unknown` | `templates/` |
+| tool dispatch / named tools | `skeletons/tool-ecosystem/` |
+| pub/sub events | `skeletons/event-bus/` |
+| score + critique | `skeletons/evaluator/` |
+| observe → hypothesize → test → report | `skeletons/diagnostic/` |
+| `pipeline` `service` `cli` `library` `ui` `unknown` | closest skeleton above, else `templates/` |
 
 ---
 
