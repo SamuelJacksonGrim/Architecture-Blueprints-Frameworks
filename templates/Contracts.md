@@ -11,7 +11,7 @@ last_decision: null
 # Contracts — *the constitution*
 
 > Guarantees that prevent architectural drift. These constrain the behaviors
-> in `Flows.md`, which is why they come *after* it (see DecisionLog D-001).
+> in `Flows.md`, which is why they come *after* it (PIPELINE order).
 > Aim for the rigor in `QUALITY-BAR.md` — specific, audited, with the *why*.
 
 ## Guarantees
