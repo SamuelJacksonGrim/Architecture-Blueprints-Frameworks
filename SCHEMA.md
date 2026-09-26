@@ -34,6 +34,11 @@ last_decision: null
 An artifact required `complete` at a given depth may only `depends_on` artifacts
 that same depth also requires `complete`.
 
+If an inherited edge breaks this, the edge to the optional artifact does not
+gate completeness at that depth. Do not complete an optional artifact just to
+satisfy an edge. That would silently raise the depth. No DecisionLog entry is
+needed. This rule already decides it.
+
 ### Three states
 
 | State | Meaning |
