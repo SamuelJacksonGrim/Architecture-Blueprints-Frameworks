@@ -1,11 +1,10 @@
-# SCHEMA — the 10-artifact workspace
+# SCHEMA — the 10-artifact language
 
-The ten names are a **network of representations**. They are handles for
-thinking. They are not stations on a line.
+The ten names are the language of the build. Default construction order is
+[`PIPELINE.md`](PIPELINE.md). How much must be persisted is [`SELECTOR.md`](SELECTOR.md).
 
-How much of the language a build must *persist* is [`SELECTOR.md`](SELECTOR.md).
-When an artifact may be called `complete` is `depends_on`, below.
-The path through the network is free.
+Construction has an order. Cognition may look backward and revise.
+Neither is a request for permission.
 
 ---
 
@@ -15,7 +14,7 @@ The path through the network is free.
 ---
 artifact: Architecture
 status: stub                  # stub | partial | complete
-order: 1                      # reading hint, not a queue
+order: 1                      # construction order hint
 fills: "structural blueprint"
 depends_on: []
 filled_by: both
@@ -23,12 +22,12 @@ last_decision: null
 ---
 ```
 
-### Dependency rule (completeness, not cognition)
+### Dependency rule (completeness)
 
 - A dependency must be `partial` or `complete` before the dependent artifact
   may itself be marked `complete`.
-- Work, draft, and revision on any artifact may happen at any time.
-- `depends_on` does not authorize a thought. It does not demand an emission.
+- Revision of an earlier artifact during the same pass is allowed.
+- `depends_on` does not authorize a thought and does not pause the pass.
 
 ### Depth self-consistency
 
@@ -39,14 +38,13 @@ that same depth also requires `complete`.
 
 | State | Meaning |
 |---|---|
-| **structurally valid** | All ten files exist — the workspace is instantiated. |
-| **depth-complete** | Every artifact this depth requires is `complete`. A build is done. |
+| **structurally valid** | All ten files exist. |
+| **depth-complete** | Every artifact this depth requires is `complete`. |
 | **fully complete** | All ten `complete`. Reusable skeleton. |
 
-### Construction vs capture
+### Capture
 
-There is no required construction sequence. Capture of *consequential*
-decisions is continuous and selective.
+Capture of *consequential* decisions is continuous and selective.
 
 **Record** a decision that alters architecture, class or depth, system
 boundaries, contracts, authority, security or privacy posture, a significant
@@ -58,19 +56,7 @@ naming, or locally reversible work — unless that work changes a consequential
 decision.
 
 Git records what changed. DecisionLog records why the architecture became what
-it is. There is no eleventh artifact for the rest.
-
-Writing DecisionLog only at the end is a failure. Writing it for every edit
-or every thought is also a failure.
-
----
-
-## The 10 artifacts
-
-A network, not a line: Architecture, Flows, Contracts, Types, Schemas,
-Interfaces, Modules, Dependencies, README. DecisionLog is available at any time.
-
-Changing your mind about an earlier artifact is reasoning, not workflow failure.
+it is.
 
 ---
 

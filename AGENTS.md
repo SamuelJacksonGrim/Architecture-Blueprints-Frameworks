@@ -3,46 +3,40 @@
 This is the first file you read after the README. It is for you, not the human.
 No extra prompt is required.
 
-Next file: [`SELECTOR.md`](SELECTOR.md). What to *read of this repo* lives only there.
+Next file: [`SELECTOR.md`](SELECTOR.md).
 
-## Division of labor
+## Relationship
 
-- The human supplies **intent** and retains **authority**.
-- You supply **reasoning and authorship**. You do not wait for a blueprint,
-  a depth name, or permission to cross artifacts.
-- This repo supplies a **language and a workspace**. It does not supply a
-  path you must walk, and it does not tax you a turn per artifact.
+The human specifies intent. You run the construction process. You produce the
+artifacts, implementation, tests, and evidence. Then the human inspects.
+
+They keep authority. They do not supervise each file.
+You do not ask "is this architecture okay?" before writing Flows.
+You do not transfer final authority to yourself by finishing the pass.
+
+**Intent → autonomous construction → inspection / evidence → human decision.**
 
 Useful surprise is allowed. Hidden consequential decisions are not.
-Inspectable is not pre-approved. Evidence is not permission.
-
-Cognitive work and observable output are different granularities.
-Think across the network in as few passes as the work needs. Persist what
-this depth requires. Do not emit intermediate proofs of passage.
+Evidence is not permission. A longer transcript is not more rigor.
 
 ## Do this
 
-1. [`SELECTOR.md`](SELECTOR.md) — class, depth, Intent Card, load list.
-   You choose depth. Three questions max.
-2. Instantiate the ten stubs + `INTENT.md` so the workspace exists.
-3. Reason across whatever artifacts the problem needs. Revisit, skip, draft
-   out of graph order, hold rivals, change your mind. Mark `complete` only
-   when [`SCHEMA.md`](SCHEMA.md) `depends_on` and this depth allow it.
-4. Log consequential decisions when they happen. Not every thought.
-   Scope is SCHEMA.
-5. Consult [`QUALITY-BAR.md`](QUALITY-BAR.md) when calling something `complete`
-   and once at the end — not after each artifact.
+1. [`SELECTOR.md`](SELECTOR.md) — class, depth, Intent Card. Three questions max.
+2. Instantiate the ten stubs + `INTENT.md`.
+3. Build in [`PIPELINE.md`](PIPELINE.md) order. If later work breaks an earlier
+   artifact, revise it and continue. Do not pause for approval.
+4. Log consequential decisions when they happen. Scope: [`SCHEMA.md`](SCHEMA.md).
+5. [`QUALITY-BAR.md`](QUALITY-BAR.md) when marking `complete` and once at the end.
 6. Stack the human did not name: smallest that can smoke-test, log, show.
-7. Persist traceability for significant behavior at this depth. Glue is free.
-8. Attempt a smoke test. Report whether it ran.
+7. Attempt a smoke test. Report whether it ran.
+8. Hand over the pass. Stop.
 
 ## Do not
 
-- Wait for approval between artifacts.
-- Serialize one coherent pass into one turn per file.
+- Ask permission between artifacts.
+- Emit a turn per file to prove you passed through it.
 - Ask the human to author the architecture.
 - Treat depth as a complexity score.
 - Restate the load list.
 - Treat [`OPERATOR.md`](OPERATOR.md) as required.
-- Treat [`PIPELINE.md`](PIPELINE.md) as a queue.
-- Turn DecisionLog into a journal. Git already exists.
+- Turn DecisionLog into a journal.

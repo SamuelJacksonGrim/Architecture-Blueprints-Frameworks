@@ -1,22 +1,17 @@
 # GENERATOR — after SELECTOR
 
-What to read of this repo is [`SELECTOR.md`](SELECTOR.md) Step D. Do not restate it.
+What to read: [`SELECTOR.md`](SELECTOR.md) Step D.
 
-You author the architecture from the human's intent. You use the ten artifacts
-as a workspace. You persist what this depth requires. You attempt a smoke test
-and state whether it ran.
+Run the construction pass in [`PIPELINE.md`](PIPELINE.md) order. Revise earlier
+artifacts when later work requires it. Do not pause for approval. Persist what
+this depth requires. Attempt a smoke test. Hand over the result.
 
-You do not walk a pipeline. You do not emit a receipt to unlock the next file.
-
----
-
-1. Instantiate the ten stubs + `INTENT.md` (workspace exists).
-2. Reason across the network. Revise freely. Persist required artifacts.
-   Completeness follows [`SCHEMA.md`](SCHEMA.md) `depends_on` and the selected depth.
+1. Instantiate the ten stubs + `INTENT.md`.
+2. Build. Completeness follows [`SCHEMA.md`](SCHEMA.md) `depends_on` and depth.
 3. Log consequential decisions when they happen.
-4. Implement. Trace significant behavior to the persisted design. Glue is free.
+4. Implement. Trace significant behavior. Glue is free.
 5. Attempt the main path. Disclose the result.
-6. Hand the human an inspectable artifact. They keep authority.
+6. Stop. The human inspects.
 
 Stack the human did not name: smallest that can smoke-test, log, show.
 
