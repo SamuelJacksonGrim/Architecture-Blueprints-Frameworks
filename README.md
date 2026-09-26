@@ -3,8 +3,8 @@
 [![License: AGPL-3.0-only](https://img.shields.io/badge/license-AGPL--3.0--only-blue)](LICENSE)
 [![dual-license](https://img.shields.io/badge/dual--license-AGPL--3.0--only%20or%20commercial-blueviolet)](LICENSING.md)
 
-> **If you are an AI:** stop. Read [`AGENTS.md`](AGENTS.md) next. Then follow
-> [`SELECTOR.md`](SELECTOR.md). The artifacts are a workspace, not a queue.
+> **If you are an AI:** read [`AGENTS.md`](AGENTS.md), then [`SELECTOR.md`](SELECTOR.md).
+> Build the pass. Do not stop for approval between artifacts.
 >
 > **If you are a human:** [`QUICKSTART.md`](QUICKSTART.md).
 
@@ -13,12 +13,14 @@
 Dual-licensed: [AGPL-3.0-only](LICENSE) or [commercial](COMMERCIAL-LICENSE.md).
 See [LICENSING.md](LICENSING.md) and [NOTICE](NOTICE).
 
-*A language and a workspace so an AI can design what you asked for — and you
-can see why. Not a procedure the AI must ask permission to walk.*
+You specify intent. The AI runs the construction process and returns artifacts,
+implementation, tests, and evidence. You inspect. You keep authority. You do
+not have to invent the design, and you do not have to sign each file.
 
-You describe intent. The AI reasons, chooses an architecture, writes the code,
-and tells you whether the main path ran. You keep authority. You do not have
-to invent the design.
+**Intent → autonomous construction → inspection / evidence → your decision.**
+
+Human authority does not mean continuous supervision.
+Finishing the pass does not move authority to the AI.
 
 ---
 
@@ -26,9 +28,9 @@ to invent the design.
 
 | | Supplies | Does not have to |
 |---|---|---|
-| **You** | Intent. Final authority. | Author the architecture. Supervise each artifact. |
-| **The AI** | Reasoning, architecture, implementation, verification status. | Hide a consequential decision. Emit a turn per file. |
-| **This repo** | Vocabulary, completeness graph, depth, inspectability. | A path through the vocabulary. A committee. A score. |
+| **You** | Intent. Final authority after the pass. | Author the architecture. Approve each artifact. |
+| **The AI** | The construction pass: architecture, implementation, evidence. | Hide a consequential decision. Ask permission between files. |
+| **This repo** | Language, construction order, depth, inspectability. | A committee. A score. A gate per artifact. |
 
 ---
 
@@ -39,9 +41,9 @@ to invent the design.
 | Entity | [`AGENTS.md`](AGENTS.md) |
 | Human | [`QUICKSTART.md`](QUICKSTART.md) |
 
-What the entity *reads of this repo* lives only in [`SELECTOR.md`](SELECTOR.md).
+What the entity reads of this repo: [`SELECTOR.md`](SELECTOR.md).
 
-Reference: [`GENERATOR.md`](GENERATOR.md) · [`SCHEMA.md`](SCHEMA.md) · [`PIPELINE.md`](PIPELINE.md) (completeness graph) · [`QUALITY-BAR.md`](QUALITY-BAR.md) · [`OPERATOR.md`](OPERATOR.md) · [`DecisionLog.md`](DecisionLog.md)
+Reference: [`GENERATOR.md`](GENERATOR.md) · [`SCHEMA.md`](SCHEMA.md) · [`PIPELINE.md`](PIPELINE.md) · [`QUALITY-BAR.md`](QUALITY-BAR.md) · [`OPERATOR.md`](OPERATOR.md) · [`DecisionLog.md`](DecisionLog.md)
 
 ---
 
@@ -49,8 +51,8 @@ Reference: [`GENERATOR.md`](GENERATOR.md) · [`SCHEMA.md`](SCHEMA.md) · [`PIPEL
 
 `Architecture · Flows · Contracts · Types · Schemas · Interfaces · Modules · Dependencies · DecisionLog · README`
 
-A network. DecisionLog is continuous and selective. Depth decides how much of
-the network must be persisted. Traversal is free.
+Construction order is PIPELINE. Depth decides how much of that order must be
+persisted. DecisionLog is continuous and selective.
 
 ---
 
@@ -67,5 +69,5 @@ the network must be persisted. Traversal is free.
 
 ---
 
-Architecture is information. This is a blueprint for blueprints — a cognitive
-environment, not a harness and not a specification-to-code factory.
+Architecture is information. A blueprint for blueprints — not a harness, not a
+spec-to-code factory, not a permission queue.
