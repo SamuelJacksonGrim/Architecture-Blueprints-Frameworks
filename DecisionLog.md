@@ -30,3 +30,30 @@ required between artifacts. Revising an earlier artifact mid-pass is constructio
 "there is no order." Transferring final authority to the AI because it finished.
 
 **Date:** 2026-09-26
+
+---
+
+### D-013 — Must Interfaces wait on Schemas at standard depth?
+
+**Question:** `standard` requires Interfaces `complete` and leaves Schemas
+optional. Every Interfaces file had `depends_on: [Schemas]`, which broke depth
+self-consistency. Every standard-depth build hit it. No full-depth skeleton
+showed it.
+
+**Chosen:** Interfaces `depends_on: [Types, Contracts]` in templates, all
+skeletons, and the example. The operations and guarantees an interface names
+come from Types and Contracts. Schemas is the cross-system ontology, and
+nothing plugs into it. Also, `SCHEMA.md`: an inherited edge to an artifact the
+depth leaves optional does not gate completeness. So the next template that
+makes the same mistake resolves itself, and it does not stall the build or
+push depth up without anyone saying so.
+
+**Rejected:** Requiring Schemas at standard (that is `full` under another
+name). Leaving each builder to resolve it (the outcome then depends on which
+entity builds, and a careless one misses the conflict). Changing construction
+order (PIPELINE is unchanged: Schemas is still built before Interfaces when it
+is built).
+
+**Found by:** a standard-depth build (Resonance Journal, its D-007).
+
+**Date:** 2026-09-26
