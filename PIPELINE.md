@@ -1,45 +1,78 @@
-# ⚙️ PIPELINE — fill order
+# PIPELINE — completeness graph, not a thinking order
 
-Load order lives only in [`SELECTOR.md`](SELECTOR.md) Step D.
+The filename is historical. This file is **not** a procedure the intelligence
+must walk. It is the graph that says when an artifact may be marked `complete`.
 
-**Construction is sequential. Decision capture is continuous and selective.**
-Scope is defined only in [`SCHEMA.md`](SCHEMA.md). DecisionLog is not a late
-pipeline step and not an activity journal.
+Load order for *reading this repo* lives only in [`SELECTOR.md`](SELECTOR.md).
+`depends_on` meaning lives only in [`SCHEMA.md`](SCHEMA.md).
 
----
-
-## Rules
-
-0. SELECTOR first. You choose class and depth. Human may override later.
-1. Instantiate all 10 stubs + `INTENT.md`.
-2. Fill sequential artifacts in the order below. Never reorder. Stop at depth.
-3. When a decision is consequential, log it as it happens. Git handles the rest.
-4. Behaviorally significant decisions and non-trivial behavior must be traceable
-   to a note this depth required. Ordinary glue does not.
-5. Self-audit. Attempt a smoke test. State whether it ran.
-
-`depends_on` meaning is only in `SCHEMA.md`.
+The blueprint describes the space in which intelligence can reason.
+It does not dictate the path intelligence must take through that space.
 
 ---
 
-## Sequential fill order
+## Distinctions (do not collapse them)
+
+| This | is not this |
+|---|---|
+| documentation | procedure |
+| evidence | permission |
+| validation | authorization |
+| traceability | step-by-step supervision |
+| inspectability | serialized cognition |
+| structured reasoning | constrained reasoning |
+| reproducibility | forced intermediate emissions |
+| cognitive work | observable output |
+
+One reasoning pass may touch every artifact. That is not a workflow violation.
+Revising an earlier artifact because later work exposed a better model is reasoning.
+Skipping an artifact this depth does not require is correct, not incomplete.
+Emitting a receipt after every thought is a token tax. Do not pay it.
+
+---
+
+## What still binds
+
+- Class and depth (SELECTOR). Depth decides which artifacts must end `complete`.
+- `depends_on` is a **completeness predicate**: an artifact may not be marked
+  `complete` while a required dependency is still `stub`. It does not require
+  you to think, draft, or emit in that order.
+- Consequential decisions are logged when they happen (SCHEMA scope). Git for the rest.
+- Behaviorally significant decisions at this depth must be traceable in the
+  *persisted* design — not narrated turn-by-turn.
+- Attempt a smoke test, or say you could not. That is output, not a mid-thought gate.
+
+---
+
+## The graph
+
+Useful default for *settling* completeness — not a required traversal:
 
 ```
-Architecture → Flows → Contracts → Types → Schemas
-         → Interfaces → Modules → Dependencies → README
+Architecture ↔ Flows ↔ Contracts ↔ Types ↔ Schemas
+         ↔ Interfaces ↔ Modules ↔ Dependencies ↔ README
 
-DecisionLog ── continuous + selective ──
+DecisionLog ── continuous + selective, any time ──
 ```
+
+`order` in frontmatter is a reading hint. It is not a queue.
+
+You may draft Dependencies while naming Modules. You may discover the
+architecture from a flow. You may hold competing architectures. You may
+change your mind. You may not mark Dependencies `complete` while Modules
+is still `stub` — the names have to exist for the edges to be real.
 
 README at `thin` depth depends only on Architecture, Flows, Contracts.
 
 ---
 
-## Self-audit
+## Done (output, once)
 
-- [ ] Intent Card: class, depth, reasons (your judgment).
-- [ ] Structurally valid.
-- [ ] Depth-complete. No required artifact still blocked by a stub it depends on.
-- [ ] Consequential decisions made during the work are in DecisionLog. The log is not a diary of edits.
-- [ ] Chosen stack, if any, is logged and was shown.
-- [ ] Smoke test ran, or inability to run is stated. No implied success.
+- Intent Card: class, depth, reasons.
+- Structurally valid (the ten files exist as handles).
+- Depth-complete: required artifacts `complete`; unused ones honestly stub/partial.
+- Consequential decisions in DecisionLog. Not a diary.
+- Stack, if you chose one, logged and shown.
+- Smoke test ran, or inability stated. No implied success.
+
+Do not emit this checklist after each artifact. Emit the result.

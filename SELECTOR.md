@@ -1,17 +1,21 @@
-# SELECTOR — classify, then build only what this system needs
+# SELECTOR — classify, then persist only what this system needs
 
-> Load order lives **only here**. AGENTS, GENERATOR, and PIPELINE point here.
+> What you *read of this repo* lives **only here**. AGENTS, GENERATOR, and
+> PIPELINE point here. They do not restate a second list.
 
 The human supplies **intent**. You supply **reasoning**. The human retains
-**authority**, not authorship of the architecture. You may surprise them.
-You may not hide a consequential decision.
+**authority**, not authorship. You may surprise them. You may not hide a
+consequential decision.
+
+The artifacts are a workspace. Class and depth decide how much of it must be
+*persisted*. They do not decide the order you think.
 
 Two independent axes. Not a complexity score.
 
 | Axis | Question | Who answers |
 |---|---|---|
 | **Class** | What *kind* of thing is this? | You |
-| **Depth** | How much structure must be explicit? | You, by the test below. The human may override. |
+| **Depth** | How much structure must be explicit *in the result*? | You. Human may override. |
 
 ---
 
@@ -41,24 +45,24 @@ Pick the class that owns the main loop. Read only that skeleton.
 
 `cognitive-cycle` only if the thing *is* a persistent self acting on its own
 state. A CLI, library, one-shot function, or request/response agent is a
-different class. Catalog siblings (evaluator, diagnostic, tool-ecosystem) are
-not imported by selecting this class.
+different class. Catalog siblings are not imported by selecting this class.
 
 ---
 
-## Step C — Depth (canonical escalation)
+## Step C — Depth
 
 **Governing test:** the thinnest depth that can express every decision this
-system cannot safely leave implicit. You apply the test. The human does not
-have to tell you the depth.
+system cannot safely leave implicit. You apply the test.
 
 No fourth depth. No score.
 
-| Depth | Must be `complete` | May stay `stub` / `partial` |
+| Depth | Must be `complete` in the result | May stay `stub` / `partial` |
 |---|---|---|
 | **thin** | Architecture, Flows, Contracts, DecisionLog, README | Types, Schemas, Interfaces, Modules, Dependencies |
 | **standard** | thin + Types + Interfaces + Modules | Schemas, Dependencies |
 | **full** | all ten | none |
+
+You may *think* about a stubbed artifact. You need not *emit* it.
 
 **Escalate — and only these, stated once, here — when the design has:**
 
@@ -74,26 +78,23 @@ that same depth permits to remain incomplete.
 
 States: structurally valid → depth-complete → fully complete (`SCHEMA.md`).
 
-Instantiate class, depth, reasons, and these triggers on the Intent Card.
-Do not keep a second copy of this list anywhere else.
-
 ---
 
-## Step D — Load list (authoritative)
+## Step D — Load list (what to read of *this* repo)
 
 1. This file
 2. Intent Card
-3. `PIPELINE.md` non-negotiables + fill order
+3. [`PIPELINE.md`](PIPELINE.md) — completeness graph only
 4. The one selected skeleton or `templates/`
-5. `GENERATOR.md` from after SELECTOR onward
+5. [`GENERATOR.md`](GENERATOR.md) from after SELECTOR onward
 
-Stop. [`QUALITY-BAR.md`](QUALITY-BAR.md) is the rubric for marking an artifact
-`complete` and for the self-audit — load it then, not as a second constitution
-up front.
+Stop reading the framework. [`QUALITY-BAR.md`](QUALITY-BAR.md) is a rubric for
+the *result*, not a pass you run after each thought.
 
 ---
 
-## Step E — Hand off
+## Step E — Then work
 
-Class, depth, reasons, stack if you chose one, assumptions, what done means,
-whether you could run it. Then build.
+Class, depth, reasons, stack if you chose one, assumptions, what done means.
+Then reason and persist. One pass is allowed. Many internal revisions are
+allowed. A turn per artifact is not required.
