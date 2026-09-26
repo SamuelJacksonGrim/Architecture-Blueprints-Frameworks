@@ -201,3 +201,23 @@ multi-hop links, import, and date filters. Four frictions remained.
   that is itself the product.
 
 **Date:** 2026-09-26
+
+### D-023 — Where do answer keys live?
+
+**Question:** A re-run of the journal prompt found `evals/journal-rubric.md`
+while reading the repo and said so. A per-app rubric inside the framework is an
+answer key inside the system under test. And once the framework has been tuned
+on a prompt, that prompt can never be a blind test again, because its own
+history describes the expected result.
+
+**Chosen:** No eval files in this repo. PIPELINE's Done list is the one
+checklist for judging any build, checked against the build's own Intent Card.
+It is safe to read because it *is* the instructions. Blind tests use prompts
+this repo has never been tuned on. Scores and per-app history live outside the
+framework, with the project they graded.
+
+**Rejected:** Hiding the rubric off the reading path (a thorough builder reads
+the whole repo). A rubric per app or genre (the template list grows, and each
+one leaks).
+
+**Date:** 2026-09-26
