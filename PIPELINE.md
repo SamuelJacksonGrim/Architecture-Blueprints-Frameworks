@@ -61,8 +61,13 @@ DecisionLog scope: [`SCHEMA.md`](SCHEMA.md).
 
 ## Done (once, at the end of the pass)
 
+This list is also how any build is judged, whatever it is. Every item is
+checked against the build's own Intent Card. There is no separate answer key.
+
 - Intent Card: class, depth, exposure, implied counterparts, reasons.
-- Every `include` built, or listed as not yet built. Every `exclude` has a reason.
+- Every `include` built and tested, or listed as not yet built. Every `exclude`
+  has a reason and appears in the handover.
+- Questions asked only as SELECTOR Step A allows.
 - Structurally valid and depth-complete. Run `python tools/validate.py <project>`
   from this repo if Python is available; otherwise check SCHEMA.md by hand.
 - Consequential decisions in DecisionLog. The handover lists consequential guesses first.
