@@ -13,7 +13,8 @@ A skeleton is a reusable *pattern* (an agent loop, an event bus, an ETL job…).
 3. Walk `PIPELINE.md` to fill them. At minimum, ship the baseline `complete`.
 4. Add a `DecisionLog` entry for the load-bearing choices that *define* the
    pattern — that's what a future reader needs most.
-5. Register it in the catalog table in the root `README.md`.
+5. Register it in the class table in `SELECTOR.md` Step B.
+6. Run `python tools/validate.py` from the repo root.
 
 ## Adding a variant (the delta/inheritance pattern)
 

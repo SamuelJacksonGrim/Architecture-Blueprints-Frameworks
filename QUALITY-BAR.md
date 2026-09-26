@@ -30,6 +30,10 @@ A log of every thought is a failed log.
 
 ## 9. Prove the main path, or disclose that you could not
 
+## 10. Nothing grows without a stated bound
+History, logs, caches, versions, queues: name the limit or the retention rule.
+"Keep everything" is a decision, and it needs a reason.
+
 ---
 
 Behaviorally significant decisions belong in the persisted design. Glue does not.

@@ -10,30 +10,38 @@ last_decision: null
 
 # Intent Card
 
-> Copy to the project as `INTENT.md`.
-> The human may leave every line blank. You fill from the conversation, show
-> once, and proceed. Cap: three blocking questions.
-> Class and depth are *your* judgment. The human may override. They do not
-> have to name a depth for you to start.
+> Copy to the project as `INTENT.md`. Rules for filling it: SELECTOR Step A.
+> Mark guesses inline with *(guess)*. Anything unmarked was stated or implied.
+> Class and depth are your judgment. The human may override after the pass.
 
 - **Want:**
 - **Must not:**
-- **Who it's for:**
-- **Runs where:**
+- **Roles** (who uses it, and what each may do):
+- **Runs where / exposed to:**
+- **Money:**
+- **Private data / secrets:**
+- **Irreversible actions:**
 - **Done when:**
-- **Secrets / private data / irreversible actions:** none / listed here
-- **Language / host (only if the human named one):**
+- **Stack** (named by the human, or chosen: smallest that can smoke-test):
+
+## Implied counterparts
+
+| Named | Expected but unstated | Decision | Why |
+|---|---|---|---|
+| | | include / exclude | |
 
 ## Selector decision
 
-Axes and escalation triggers live only in [`SELECTOR.md`](../SELECTOR.md) Step C.
+Axes, triggers, and profiles live only in [`SELECTOR.md`](../SELECTOR.md).
 Instantiate them here. Do not invent a second list.
 
 ```yaml
-class:            # from SELECTOR
-depth:            # from SELECTOR governing test — you chose this
-reasons:          # structural conditions that hold now
+class:            # one token from SELECTOR Step B
+depth:            # thin | standard | full (SELECTOR Step C)
+exposure:         # local-single | local-shared | networked | multi-tenant
+asked:            # none (and why), or each question and the field it resolved
+reasons:          # the Step C triggers that hold now, plus anything that raised depth
   -
-escalate_if:      # copy SELECTOR Step C triggers only
+escalate_if:      # the Step C triggers that do not hold yet
   -
 ```

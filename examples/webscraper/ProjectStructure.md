@@ -1,7 +1,7 @@
 # Project Structure — Price-Aggregator Webscraper
 
 > The **source tree** the design implies, derived from `Modules.md` +
-> `Dependencies.md` (Step 3 of `GENERATOR.md`). One module → one package. This
+> `Dependencies.md` (the construction pass in `AGENTS.md`). One module → one package. This
 > is the scaffold a human starts coding into; the stub files exist in `src/`.
 
 ```

@@ -1,6 +1,6 @@
 # 🕷️ Price-Aggregator Webscraper — a generated schematic
 
-> **This folder is a worked example of [`../../GENERATOR.md`](../../GENERATOR.md)
+> **This folder is a worked example of [`../../AGENTS.md`](../../AGENTS.md)
 > run on a real idea:** *"a webscraper that aggregates product prices."*
 >
 > It's what a human receives after saying that one sentence to an intelligent
@@ -17,7 +17,7 @@
 > This example is **design + folder scaffold only.** The `src/` directories
 > contain `.keep` placeholders, not running code. Do not copy it as proof that
 > a build "works." In a live build the AI writes real code into those folders
-> (GENERATOR Step 4) and smoke-tests the main path — or says it could not.
+> (AGENTS step 6) and smoke-tests the main path — or says it could not.
 
 ## Suggested reading order
 1. [`architecture/README.md`](architecture/README.md) — what & why
