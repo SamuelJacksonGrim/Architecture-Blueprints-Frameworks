@@ -25,7 +25,18 @@ for the human. Do not build it.
 3. State its cost: what grows (rows, bytes, CPU, dependencies) and the bound.
    Anything that grows without limit gets a bound or a retention rule first.
 4. Fix it. Prove it with a test. Update the docs in the same change.
-5. Log it in DecisionLog only if it changed a consequential decision.
+5. Rerun the existing checks (tests, smoke run, validator). If something that
+   should still work now fails, find out why before doing anything else:
+   - **The round broke it:** fix it within the round.
+   - **The old check was wrong or outdated** (the round's change was intended):
+     update the check, and say so in the handover.
+   - **It can't be fixed within this round:** undo only what caused it, and
+     report the failure and its cause to the owner.
+
+   When a round intentionally changes behaviour, update or delete the checks
+   for the old behaviour in the same change. Checks track current intent, not
+   history.
+6. Log it in DecisionLog only if it changed a consequential decision.
 
 ## Stop
 
