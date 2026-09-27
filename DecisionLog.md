@@ -221,3 +221,26 @@ the whole repo). A rubric per app or genre (the template list grows, and each
 one leaks).
 
 **Date:** 2026-09-26
+
+### D-024 — Who says "complete", and what does a failing check mean in a round?
+
+**Question:** Challenged in debate with the author. Is a builder's `complete` a
+loophole? And does KAIZEN let a round break what already worked?
+
+**Chosen:**
+- `complete` means complete to this point: the pass reached its threshold. It
+  is the builder's statement, provisional, and it reopens. No outside checker
+  decides it.
+- In a KAIZEN round, a check that fails after the change is diagnosed first.
+  If the round broke it, fix it. If the check was outdated, update it and say
+  so. If it can't be fixed within the round, undo only the cause and report.
+- Checks track current intent, not history, so the suite does not bloat.
+
+**Rejected:**
+- Proof citations as a gate on `complete` (the owner decides; evidence goes in
+  the handover).
+- Undoing a round on any failure (it loses the lesson and the progress).
+- Keeping every past check (bloat).
+
+**Date:** 2026-09-27
+

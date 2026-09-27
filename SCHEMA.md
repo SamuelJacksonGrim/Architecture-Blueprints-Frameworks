@@ -47,6 +47,10 @@ needed. This rule already decides it.
 | **depth-complete** | Every artifact this depth requires is `complete`. |
 | **fully complete** | All ten `complete`. Reusable skeleton. |
 
+`complete` means **complete to this point**: this pass reached its threshold
+for that artifact. It is the builder's statement at the end of a pass. It is
+provisional, and it reopens when later work or the owner finds an issue.
+
 ### Capture
 
 Capture of *consequential* decisions is continuous and selective.
