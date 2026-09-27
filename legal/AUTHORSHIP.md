@@ -24,8 +24,7 @@ repository is the dated evidence.
 4. At every step the author **selects** what to keep, **rejects** what to
    discard, **edits** the expression, and **integrates** the pieces.
 
-AI tools used as instruments have included **Claude** (Anthropic), **GPT**
-(OpenAI), **Grok** (xAI), and **Gemini** (Google). None is an author. Each was operated under the
+AI tools used as instruments have included **Claude** (Anthropic), **GPT** (OpenAI), **Grok** (xAI), **Gemini** (Google), and at times **GitHub Copilot**. The author connected them by hand, carrying context between platforms by copying, pasting, and paraphrasing, with no router or API between them. None is an author. Each was operated under the
 author's direction. `COLLABORATION.md` and `OPERATOR.md` describe this method
 as the author practices it.
 
