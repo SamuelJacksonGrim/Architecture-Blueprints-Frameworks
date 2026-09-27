@@ -25,7 +25,7 @@ repository is the dated evidence.
    discard, **edits** the expression, and **integrates** the pieces.
 
 AI tools used as instruments have included **Claude** (Anthropic), **GPT**
-(OpenAI), and **Grok** (xAI). None is an author. Each was operated under the
+(OpenAI), **Grok** (xAI), and **Gemini** (Google). None is an author. Each was operated under the
 author's direction. `COLLABORATION.md` and `OPERATOR.md` describe this method
 as the author practices it.
 
